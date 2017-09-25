@@ -1,0 +1,199 @@
+@using System.Threading.Tasks
+@using WebPortal.Web.Public.Startup
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@{
+    ViewBag.CurrentPageName = FrontEndPageNames.ClaremontEAP;
+}
+@section Styles
+{
+
+}
+@section Scripts
+{
+
+}
+@Html.Partial("~/Views/Members/_HwSideBar.cshtml")
+<div class="cell-sm-6">
+    <div class="range">
+        <div class="cell-xs-24 cell-md-12" style="margin-bottom:35px;">
+            <article class="icon-box-vertical">
+                <img src="\assets\images\claremont-eap-logo.png" />
+                <p>The Plan’s Employee Assistance Program and Chemical Dependency Treatment services is through Claremont EAP.  This program is effective January 1, 2015 and is available to all active Health Fund members and their eligible dependents.  This includes both Kaiser and Indemnity Plan members and dependents.</br></br>Because personal concerns can have a big impact on work performance and overall wellbeing, we can all use extra support at some point in our lives. Claremont EAP can help resolve personal issues before they become more serious and difficult to manage.  You and your family members can receive professional, confidential counseling at no cost.  The EAP also provides access to Chemical Dependency Treatment and other resources that can help you address virtually any family/health need.</br></br><b>To access services, call (800) 834-3773.</b> A Claremont counselor will help you develop an action plan and refer you to the resources most appropriate for your needs.</p>
+            </article>
+        </div>
+        <div class="cell-xs-24 cell-md-12" style="margin-bottom:35px;">
+            <article class="icon-box-vertical">
+                <h4 class="icon-box-header" style="color:#000;">Chemical Dependency Case Management Services</h4>
+                <p>Claremont will manage Chemical Dependency Treatment Services available through your health plan.  The Trustees feel Claremont will be able to offer timely assistance to eligible Fund participants in assessing potential problems and providing access to effective and appropriate services.</p>
+            </article>
+        </div>
+        <div class="cell-xs-24 cell-md-12" style="margin-bottom:35px;">
+            <div id="EE-section" class="panel-group active" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-parent="#accordion" href="#collapseOne" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                                Counseling
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            Six free visits per incident, per family member (visits renew 12-months from date of intake).  Counseling can address any personal issue such as marital/family conflicts, parenting concerns, substance abuse, work stress, depression, and other issues that affect your quality of life.  Counseling is available in person or via video conference.  Additional visits are offered to clients at Claremont’s discounted rates.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a role="button" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Legal Counseling
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            Up to 30-minutes of free consultation is provided at no cost.  A 25% discount is available for any service beyond the initial consultation.  Telephonic or in-person consultation is available.  Attorneys have expertise in areas such as family law, consumer issues, traffic violations and personal injury, etc.  Free “Simple Will” kits are available upon request.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Financial Services
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            An initial 30-60 minute consultation with a financial counselor is available at no cost.  Financial specialists are able to assist employees/family members with budgeting, retirement planning, debt consolidation, ID Theft, financial planning, auto and real estate purchasing, etc.  Free credit reports and consultation are provided upon request.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Elder/Adult/Child Care
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Nationwide referrals for elder/adult/child care resources are provided.  A Work/Life Specialist consults with each employee/family member to generate a customized report, which provides a listing of appropriate agencies/services and other helpful written information.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingFive">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                School/College Assistance
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            This nationwide program helps parents research elementary and/or secondary schools for their child.  Claremont also provides assistance with the college search process for both college-bound children and the working adult in search of furthering his/her educational needs.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingSix">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                Adoption Assistance
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Nationwide referrals for adoption attorneys, agencies, infertility specialists, and support groups are provided.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingSeven">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                Convenience Referrals
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Referrals provided for daily living such as pet care, home repair, errand services, travel, entertainment and apartment locator services.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingEight">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                Wellness Referrals
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                        <div class="panel-body">
+                            Help with physician searches, medical support groups, fitness centers, diet & nutrition resources, alternative medicine and other resources.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingNine">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                Claremont Personal Advantage(CPA)
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+                        <div class="panel-body">
+                            Unlimited access is provided to Claremont’s Enhanced Web Site for articles, resources, videos and assessments about health, finance, legal issues, personal growth, stress, family life and more.
+                        </div>
+                    </div>
+                </div>
+                <p>For more information, go to <a href="http://www.claremonteap.com/pages/cap.html" />http://claremonteap.com</a> and use company name: Local 831</br></br>Extended eligibility for Substance Abuse Counseling and Treatment is available solely to the employee for 6 months after the loss of eligibility for coverage. </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cell-lg-3" style="border-left: 1px solid #e4e4e4;">
+    <div class="leader" style="padding:0px 15px; color:#fff;">
+        <h5 style="color:#000; padding-bottom:15px;"><b>Quarterly Newsletters</b></h5>
+        <ul class="enrollment-information">
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\2017-July-September.pdf" target="_blank" />July-September 2017</a></li>
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\2017-April-June.pdf" target="_blank" />April-June 2017</a></li>
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\March-2017.pdf" target="_blank" />March 2017</a></li>
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\2016-January-March.pdf" target="_blank" />January-March 2016</a></li>
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\2015-October-December.pdf" target="_blank" />October-December 2015</a></li>
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\2015-July-September.pdf" target="_blank" />July-September 2015</a></li>
+        </ul>
+    </div>
+    <div class="leader" style="padding:30px 15px; color:#fff;">
+        <h5 style="color:#000; padding-bottom:15px;"><b>Flyers</b></h5>
+        <ul class="enrollment-information">
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\4-Great-Strategies-for-Gratitude.pdf" target="_blank" />4 Great Strategies for Gratitude</a></li>
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\Its-all-Time-o-all-into-Better-Habbits.pdf" target="_blank" />It's Fall - Time to Fall into Better Habbits</a></li>
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\May-is-mental-ealth-wareness-onth.pdf" target="_blank" />May is Mental Health Awareness Month</a></li>
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\Summertime-and-the-Livin-is-Easy.pdf" target="_blank" />Summertime, and Livin' is Easy</a></li>
+        </ul>
+    </div>
+    <div class="leader" style="padding:0px 15px; color:#fff;">
+        <h5 style="color:#000; padding-bottom:15px;"><b>Webinars</b></h5>
+        <ul class="enrollment-information">
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\July-2017-Social-Security-Benefits.pdf" target="_blank" /><b>Social Security Benefits</b>| July 2017</a></li>
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\May-2017-Finding-Happiness.pdf" target="_blank" /><b>Finding Happiness</b>| May 2017</a></li>
+            <li style="margin-bottom:10px"><a href="\Docs\HealthPlan\April-2017-Grief-and-Loss.pdf" target="_blank" /><b>Grief and Loss</b>| April 2017</a></li>
+        </ul>
+    </div>
+
+
+</div>
+            </div>
+          </div>
+    </section>
+</div>

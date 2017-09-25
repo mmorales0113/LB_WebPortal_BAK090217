@@ -1,0 +1,84 @@
+@using System.Threading.Tasks
+@using WebPortal.Web.Public.Startup
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@{
+    ViewBag.CurrentPageName = FrontEndPageNames.DisabilityExtension;
+}
+@section Styles
+{
+
+}
+@section Scripts
+{
+
+}
+@Html.Partial("~/Views/Members/_HwSideBar.cshtml")
+<div class="cell-lg-9">
+    <div class="range">
+
+        <div class="cell-xs-24 cell-md-12" style="margin-bottom:15px;">
+            <article class="icon-box-vertical">
+                <h4 class="icon-box-header" style="color:#000;">Extension of Coverage Due to Work-Related Disability</h4>
+                <div class="range">
+                    <div class="cell-md-4">
+                        <img src="\assets\images\disability-image.jpg" />
+                    </div>
+                    <div class=" cell-md-8" style="margin-bottom:35px;">
+                        <p>An extension of coverage is available which will allow for up to 3 months of extended coverage if you become unable to work due to a work-related disability.  You may be eligible for this benefit if you meet all of the following three requirements:</p></br>
+                        <ul>
+                            <li>1. you are not eligible to receive an extension of coverage through your employer;</li>
+                            <li>2. you are eligible for health benefits under this Plan; and</li>
+                            <li>3. you are unable to work due to a work-related disability.</li>
+                            
+                        </ul>
+                    </div>
+                    <div class=" cell-md-12" style="margin-bottom:35px;">
+                        All requests for extended coverage during a disability must be supported with the necessary documentation required by this Plan.
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="cell-xs-24 cell-md-12" style="margin-bottom:35px;">
+            <h3>Available Forms</h3>
+
+            <a href="\Docs\Disability\Local-831-Disability-Form-Rev-7-2017.pdf" type="reset" class="btn btn-silver-outline btn-block" target="_blank">Medical Proof of Disability Form</a>
+
+            <h5>For more information, contact the trust office:</h5>
+
+            <form data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php" class="rd-mailform form-modern offset-top-30">
+                <div class="range">
+                    <div class="cell-sm-6">
+                        <div class="form-group">
+                            <label for="contact-name" class="form-label">Name</label>
+                            <input id="contact-name" type="text" name="name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="cell-sm-6 offset-top-30 offset-sm-top-0">
+                        <div class="form-group">
+                            <label for="contact-email" class="form-label">Email</label>
+                            <input id="contact-email" type="email" name="email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="cell-xs-12 offset-top-30">
+                        <div class="form-group">
+                            <div class="textarea-lined-wrap">
+                                <label for="contact-message" class="form-label">Message</label>
+                                <textarea id="contact-message" name="message" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell-xs-8 offset-top-30 offset-xs-top-30 offset-sm-top-50">
+                        <button type="submit" class="btn btn-primary btn-block">Send</button>
+                    </div>
+                    <div class="cell-xs-4 offset-top-22 offset-xs-top-30 offset-sm-top-50">
+                        <button type="reset" class="btn btn-silver-outline btn-block">Reset</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+          </div>
+    </section>
+</div>

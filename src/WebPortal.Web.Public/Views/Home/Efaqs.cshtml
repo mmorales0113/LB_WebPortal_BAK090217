@@ -1,0 +1,348 @@
+﻿@using System.Threading.Tasks
+@using WebPortal.Web.Public.Startup
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@{
+    ViewBag.CurrentPageName = FrontEndPageNames.Efaqs;
+}
+@section Styles
+{
+}
+@section Scripts
+{
+}
+
+<div class="container">
+    <div class="page-header">
+        <h5>Employer FAQs</h5>
+        <div class="rd-navbar-nav-wrap toggle-original-elements faqlist">
+        </div>
+    </div>
+    <div id="VC-section" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-parent="#accordion" href="#collapseOne" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                        When are the contribution reports due?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    Contribution reports and payment are due by the 10th of the month following the month in which hours are worked.  Reports are considered
+                    late if received after the 20th of the following month and late charges will be assessed.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a role="button" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        What are the late charges for delinquent reports?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    Liquidated damages are assessed at 10% of the Health, Pension & Training unpaid contributions, or $50.00, whichever is greater. 
+                    Interest is assessed at 8%.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Where do I mail my contribution reporting form and payment?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    The remittance address is:</br>
+                    Local Union 831 Trust Fund</br>
+                    P.O. Box 513435</br>
+                    Los Angeles, CA 90051-3435</br>
+                    Checks are payable to:  Local Union 831 Trust Fund</br>
+                    The remittance address is also stated at the bottom of the monthly employer reporting form.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Can I pay by ACH?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    Yes, ACH is a payment option.  For details, please contact the Trust Fund Office by phone at (626) 279-3036 or by email to
+                    lu831ermaint@pswadmin.com.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingFive">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        How do I update our company address?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    Address changes must be submitted in writing by mail to Local 831 Trust Fund, 4399 Santa Anita Ave. #150, El Monte, CA 91731;
+                    or electronically to lu831ermaint@pswadmin.com, Subject:  Local 831 Employer Change of Address.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingSix">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        What if I do not receive a contribution report?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    To receive a replacement monthly employer report form please call (626) 279-3072 or by email to lu831ermaint@pswadmin.com.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingSeven">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        Can I submit several months on a single report?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    Employee hours and wages must be submitted on separate reports for each work month.  Work months cannot be combined into one single
+                    reporting form.  For questions about reporting, please contact the call (626) 279-3072 or by email to lu831ermaint@pswadmin.com.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingEight">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        What if there is a rate change mid-week?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                <div class="panel-body">
+                    If there is a rate change mid-week, you may submit two employer report forms.  Please indicate "Supplemental Hours" on the
+                    supplemental report (old rates) and send with the "New rates" report.  For questions about reporting, please call (626) 279-3072
+                    or by email to lu831ermaint@pswadmin.com.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingNine">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        Who do I request a “Status/Release” letter from?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+                <div class="panel-body">
+                    For a copy of a "Status/Release" letter please call (626) 279-3036 or email lu831ermaint@pswadmin.com.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingTen">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        Can I get my “Status/Release” letter immediately?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+                <div class="panel-body">
+                    Upon request a copy can be sent to you electronically and a hardcopy will be mailed to you as well.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingEleven">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                        Who can I contact to confirm my report was completed correct before I cut a check?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseEleven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEleven">
+                <div class="panel-body">
+                    For any issues about reporting, please call (626) 279-3072 or by email to lu831ermaint@pswadmin.com.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingTwelve">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                        Do I have to use the Fund’s contribution reports or can I use my own worksheets when remitting contributions?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwelve" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwelve">
+                <div class="panel-body">
+                    It is preferable that you use the contribution reports which we send you on a monthly basis. The reason for this is that the names
+                    of the employees appear in our computer system in the same order as they appear on the contribution reports. This makes entering the
+                    data into the computer much easier and less prone to error. If you are going to submit contributions on a worksheet that you have
+                    created, we request that you make sure the employees are listed in alphabetical order with social security numbers.  The hours and
+                    wages should be displayed next to each name.  You may also re-create our monthly employer reporting form to manipulate monthly as
+                    needed.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingThirteen">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                        Can I remit one check for more than one Fund?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThirteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThirteen">
+                <div class="panel-body">
+                    One check may be drafted for one contribution report or multiple reports for all funds.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingFourteen">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+                        What if I cannot pay my contributions on time?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFourteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFourteen">
+                <div class="panel-body">
+                    If you cannot pay your contributions on time, it is imperative that you send in the original contribution report without payment
+                    and a letter explaining the reason why the contributions will not be remitted at this time.  The letter should also include when you
+                    expect to remit payment. The Trust Fund will be in contact with you regarding payment of these contributions but it is imperative
+                    that we receive the contribution report since the data contained on this report is the basis for eligibility for your employees.
+                    Notification to the Trust Fund of your inability to pay the contributions in a timely manner will not relieve you of any liquidated
+                    damages and/or interest that may be assessed.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingFifteen">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
+                        Why am I charged liquidated damages?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFifteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFifteen">
+                <div class="panel-body">
+                    According to the Collective Bargaining Agreement, reports are considered late if not received by the 20th of the month, and are
+                    assessed applicable late charges.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingSixteen">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen">
+                        Why is the charge so huge for being one day late?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSixteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSixteen">
+                <div class="panel-body">
+                    A liquidated damage assessment will be the same whether your payment is one day late or thirty-one days late. The provisions of the
+                    collective bargaining agreement provide for an assessment of liquidated damages based on unpaid contributions.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingSeventeen">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">
+                        Do I have to mail my contribution reports and payment or can they be hand-delivered?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSeventeen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeventeen">
+                <div class="panel-body">
+                    Contribution reports are mailed with a return envelope for your convenience, but you may also hand-deliver or over-night mail your
+                    report and payment to 4399 Santa Anita Ave. #150, El Monte, CA 91731.  A receipt will be issued to you upon hand-delivery. 
+                    Please note payments must be made by check, money order, or cashier's check.  The Trust Fund Office cannot accept cash or credit
+                    card payments.  Please also note that over-night mail cannot be sent to the P. O. Box address.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingEighteen">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
+                        If I am unsure how to complete the contribution report, who do I contact for help?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseEighteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEighteen">
+                <div class="panel-body">
+                    If you require assistance in completing your monthly employer reporting form, please call (626) 279-3072 or by email to lu831ermaint@pswadmin.com.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingNineteen">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNineteen" aria-expanded="false" aria-controls="collapseNineteen">
+                        I made an error on a contribution report that was already submitted. How can I get the information corrected?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseNineteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNineteen">
+                <div class="panel-body">
+                    For assistance on correcting any reporting errors on previously submitted contribution reports, please call at (626) 279-3072 or
+                    by email to lu831ermaint@pswadmin.com.
+                </div>
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingTwenty">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwenty" aria-expanded="false" aria-controls="collapseTwenty">
+                        What happens if I become delinquent with contributions?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwenty" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwenty">
+                <div class="panel-body">
+                    If you become delinquent you will receive a series of letters and phone calls from the Trust Fund attempting to ascertain the reason
+                    for the delinquency and when we can expect payment. If the situation cannot be resolved, or if you completely ignore all attempts to
+                    resolve the matter with the Trust Fund, then the matter will be turned over to Legal Counsel for collection. You should be advised
+                    that under ERISA, you may then be liable for all attorneys fees and costs, interest, as well as liquidated damages.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingTwentyOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyOne" aria-expanded="false" aria-controls="collapseTwentyOne">
+                        Is there a grace period for submitting payment?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwentyOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwentyOne">
+                <div class="panel-body">
+                    The employer report is due on the 10th of the month, but not considered delinquent if received by the 20th (10 day grace period).
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

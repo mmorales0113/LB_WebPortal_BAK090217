@@ -1,0 +1,190 @@
+@using System.Threading.Tasks
+@using WebPortal.Web.Public.Startup
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@{
+    ViewBag.CurrentPageName = FrontEndPageNames.EligibilityProvisions;
+}
+@section Styles
+{
+
+}
+@section Scripts
+{
+
+}
+@Html.Partial("~/Views/Members/_HwSideBar.cshtml")
+<div class="cell-lg-9">
+    <div class="range">
+        <div class="cell-xs-24 cell-md-12" style="margin-bottom:35px;">
+            <article class="icon-box-vertical">
+                <h4 class="icon-box-header" style="color:#000;">Eligibility Provisions</h4>
+                <p>
+                    The benefits provided under this Fund are made possible by monies received by the Southern
+                    California Local 831-Employer Health Fund primarily as a result of the collective bargaining agreements
+                    negotiated between Employers and Tradeshow and Sign Crafts Local Union 831. Collective Bargaining
+                    Agreements are available at the Local 831 office.</br></br> The Board of Trustees is comprised of six trustees.
+                    Three of the trustees are appointed by the employers and three trustees are appointed by the Union.
+                    The Trustees as a board represent the employee-beneficiaries.</br></br> Monies received by the Fund and the
+                    benefits provided by the Plan are maintained and administered under the direction of the Board of
+                    Trustees. The trustees serve without pay as a service to the industry, the employees and other beneficiaries participating in the Plan.
+                </p>
+            </article>
+            <div id="EE-section" class="panel-group active" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-parent="#accordion" href="#collapseOne" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                                EFFECTIVE DATE OF COVERAGE
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            For new hires, your effective date of coverage is determined when you have met all eligibility
+                            requirements. (See Eligibility Requirements)</br></br> Changes in coverage involving the addition of
+                            dependents are effective retroactive to the date of the event, such as marriage, birth or
+                            adoption, providing the application is filed within 30 days of the event.</br></br> Addition of dependents
+                            is effective on a timely or prospective basis, depending upon receipt of the application by the
+                            Trust Fund Office. Effective June 1, 2010 children up to twenty-six (26) years of age may be
+                            eligible for continued coverage if they are not eligible for health coverage from an employer
+                            (other than a parent’s employer).</br></br> A COBRA notice will be mailed to your dependents to offer
+                            continued coverage that are identical to your previous coverage. The cost of COBRA coverage for
+                            your dependents will be included with the COBRA notice received.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a role="button" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                EMPLOYEE-BENEFICIARY RESPONSIBILITIES
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body" style="padding-left: 30px;">
+                            Employee-beneficiaries are responsible for:
+                            <ul style="margin-left:35px">
+                                <li type="square">Providing current and accurate personal information as described in this booklet.</li>
+                                <li type="square">Verifying that a provider is contracted with the Anthem Blue Cross of California PPO network.</li>
+                                <li type="square">Making appropriate self-payments timely to maintain coverage when necessary.</li>
+                                <li type="square">Complying with the Fund’s rules.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                CHANGE OF COVERAGE
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            To change your coverage, (Medical Plan) you should contact the Trust Fund Office and complete an enrollment change form. You are
+                            eligible to change your coverage (Medical Plan) outside the Open Enrollment Period under the following circumstances:
+                            <ul style="margin-left:35px">
+                                <li type="square">You marry and want to enroll your spouse and your newly eligible dependent children.</li>
+                                <li type="square">You need to enroll a newborn or newly adopted child.</li>
+                                <li type="square">You have a change in family status involving the loss of eligibility of a family member (separation, divorce, death).</li>
+                                <li type="square">Your spouse’s or eligible dependent’s employment status changes resulting in a loss of health coverage.</li>
+                                <li type="square">You move out of your plan’s service area</li>
+                                <li type="square">
+                                    Those who do not have a level designated due to premium status are allowed to change to a higher level
+                                    one time in a calendar year outside of the Open Enrollment Period. You can change to a lower level as many times as needed during the year.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                ELIGIBILITY
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            The Southern Californian Local Union 831 Employer Health Fund Plan provides a health care package to all eligible participants
+                            and their eligible dependents. In order to qualify for these benefits, participants and dependents must meet the eligibility
+                            requirements of the Health Plan. The following sections describe the basic eligibility requirements for health Plan coverage,
+                            how eligibility is maintained and the programs available if eligibility is lost.</br></br> If you and your dependents are eligible for
+                            coverage, the Trust Fund Office must receive the Enrollment Form (completed), along with any supporting documents for your
+                            dependents.</br></br> Original Certificate of Marriage of your spouse and original Certificate of Birth of each dependent will be required
+                            to establish eligibility. Photocopies will not be accepted.</br></br>The Health Plan does not cover charges for conditions after
+                            eligibility terminates, even if those conditions developed during a period of Health Plan eligibility or if treatment for those
+                            conditions began during a period of Health Plan eligibility.</br></br> The benefits under the Health Plan are not vested or guaranteed.
+                            They may be modified, reduced or canceled at any time by the Board of Trustees.
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingFive">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                ELIGIBILITY REQUIREMENTS
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Hours and benefit credits you earn, as well as the amount your employer contributes on your behalf would determine the level
+                            of benefits you and/or your dependents would receive.</br></br>(If there is a difference between the hours you have worked and the
+                            contribution your employer has made towards your benefits, you may have to submit your check stubs to the Trust Fund Office.)</br></br>
+                            The monthly hours required to be eligible for Health Plan benefits under all Plan Levels are outlined on the following page.</br></br>
+                            For monthly hours required at other contribution rates, contact the Trust Fund Office at 1.877.572.7005 or 626.279.3080.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingSix">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                BENEFIT CREDIT/HOUR BANK
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body" style="padding-left: 30px;">
+                            You may accumulate up to a maximum of five (5) months of benefit credits/hours in your benefit credit/ hour bank (Hour Bank).</br></br>
+                            If you work more hours than are necessary to earn the benefit credit/hours required for the level of coverage you have selected,
+                            you may bank a reserve of benefit credits/hours. These benefit credits/hours will be used towards the monthly contributions
+                            needed to provide you and your dependents with health benefits until there is not enough credits and hours remaining in your
+                            hour bank.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingSeven">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                METHODS OF OBTAINING ELIGIBILITY
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            There are two ways employers may make contributions on your behalf into the Plan:</br></br> Your employer may contribute on a per
+                            hour basis. In this case, you will need to preselect your level of coverage. All hours contributed for you are used to
+                            calculate your Benefit Credits. If you have sufficient credits, those credits are used to provide for your monthly coverage
+                            (See Monthly Schedule of Chart on the following page to determine which level of coverage you would be able to select).</br></br>
+                            Credits earned above the monthly required amount needed for the level of coverage you preselected are banked as a reserved benefit
+                            credit.</br></br> An employer may contribute a fixed amount per month (flat rate). If your employer contributes a fixed amount per month on
+                            your behalf, you will be assigned to the level that is appropriate for that contribution.
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+          </div>
+    </section>
+</div>

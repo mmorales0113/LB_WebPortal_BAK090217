@@ -1,0 +1,175 @@
+﻿@using System.Threading.Tasks
+@using Abp.Extensions
+@using WebPortal.Web.Public.Views.Shared.Components.Header
+@model HeaderViewModel
+<div class="page">
+    <div class="page-loader page-loader-variant-1">
+        <div>
+            <a href="index.html" class="brand"><img src="~/assets/images/logo.png" alt="" width="143" height="60" /></a>
+            <div class="page-loader-body">
+                <div id="spinningSquaresG">
+                    <div id="spinningSquaresG_1" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_2" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_3" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_4" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_5" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_6" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_7" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_8" class="spinningSquaresG"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="page-head">
+        <div class="rd-navbar-wrap">
+            <nav data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-stick-up-clone="false" data-md-stick-up-offset="53px" data-lg-stick-up-offset="53px" data-md-stick="true" data-lg-stick-up="true" class="rd-navbar rd-navbar-default shadow">
+                <div class="rd-navbar-inner">
+                    <div class="rd-navbar-aside-wrap">
+                        <div class="rd-navbar-aside">
+                            <div data-rd-navbar-toggle=".rd-navbar-aside" class="rd-navbar-aside-toggle"><span></span></div>
+                            <div class="rd-navbar-aside-content">
+                                <ul class="rd-navbar-aside-group list-units">
+                                    <li>
+                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+                                            <div class="unit-body"><a href="\Home\Sites" class="link-dusty-gray">Related Sites</a></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="unit unit-horizontal unit-spacing-xs unit-middle">
+
+
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="rd-navbar-aside-group">
+                                    @if (Model.LoginInformations?.User != null)
+                                    {
+                                        <div id="LanguageDropDown" class="btn-group dropdown">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-delay="1000" data-close-others="true">@Model.GetShownLoginName() <i class="fa fa-angle-down"></i></button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li class="language-menu-item">
+                                                    <a href="@Url.Action("Logout", "Account")"><i class="icon-logout"></i> <span>@L("Logout")</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <a style="color:#000" href="@(string.Format("{0}{1}?ss={2}&returnUrl={3}", Model.AdminWebSiteRootAddress, "account/login", "true", Model.WebSiteRootAddress + "Account/Login"))">@L("LogIn")</a> <!-- TODO: get url from setting or Request. -->
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="rd-navbar-group">
+                        <div class="rd-navbar-panel">
+                            <button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span></button><a href="\" class="rd-navbar-brand brand"><img src="~/assets/images/logo.png" alt="" width="143" height="27" /></a>
+                        </div>
+                        <div class="rd-navbar-nav-wrap">
+                            <div class="rd-navbar-nav-inner">
+                                <ul class="rd-navbar-nav">
+                                    <li class="active">
+                                        <a href="\">HOME</a>
+                                    </li>
+                                    <li>
+                                        @if (Model.LoginInformations?.User != null)
+                                        {
+                                        <li>
+                                            <a href="#">BENEFITS</a>
+                                            <ul class="rd-navbar-dropdown">
+                                                <li>
+                                                    <a href="\Members\HealthPlan">Health</a>
+                                                    <ul class="rd-navbar-dropdown">
+                                                        <li>
+                                                            <a href="\Members\EligibilityProvisions">Eligibility Provisions</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="\Members\DeathBenefit">Death Benefit</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="\Members\Cobra">COBRA</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="\Members\DisabilityExtension">Disability Extension</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="\Members\ClaremontEAP" target="_blank">Claremont EAP</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="\Members\SelfPay">Self-Pay|Buy Up</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="\Members\HealthReference">Reference Materials</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="\Members\HealthForms">Participant Forms</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="\Members\ParticipantPortal">Participant Portal</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="\Members\Pension">Pension</a>
+                                                    <ul class="rd-navbar-dropdown">
+                                                        <li>
+                                                            <a href="\Members\PensionReference">Reference Materials</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="\Members\PensionForms">Participant Forms</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="\Members\PensionFaqs">FAQS</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="http://uyfcu.org/" target="_blank">Vacation</a></li>
+                                                <li><a href="\Home\FormerParticipant" 6>Former Participant</a></li>
+                                            </ul>
+                                        </li>
+                                        }
+                                        </li>
+                                        @if (Model.LoginInformations?.User != null)
+                                        {
+                                            <li>
+                                                <a href="\Members\Notices">IMPORTANT NOTICES</a>
+                                            </li>
+                                        }
+                                        <li>
+                                            <a href="#">PORTALS</a>
+                                            <ul class="rd-navbar-dropdown">
+                                                <li>
+                                                    <a href="https://portal.pswadmin.com">TRUSTEES</a>
+                                                </li>
+                                                <li>
+                                                    <a href="\Home\Employer">EMPLOYERS</a>
+                                                </li>
+                                                <li>
+                                                    <a href="\Home\Pportal">PARTICIPANTS</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://qp.pswadmin.com">PROVIDERS</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a href="\Home\Contact">CONTACT US</a>
+                                        </li>
+                                        <li>
+                                            <a href="\Home\Local">LOCAL UNION</a>
+                                        </li>
+                                        <li>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>

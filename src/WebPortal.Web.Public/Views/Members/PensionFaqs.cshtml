@@ -1,0 +1,182 @@
+@using System.Threading.Tasks
+@using WebPortal.Web.Public.Startup
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@{
+    ViewBag.CurrentPageName = FrontEndPageNames.PensionFaqs;
+}
+@section Styles
+{
+
+}
+@section Scripts
+{
+
+}
+
+<div class="container">
+    <div class="page-header">
+        <h5>MOST COMMON RETIREMENT QUESTIONS!</h5>
+        <h6>These are some of the questions most frequently asked by Union members regarding retirement.  It is not designed to be relied upon in making final retirement decisions.  In making retirement decisions you should solely rely on the summary plan description provided by the Pension Plan, or upon information provided by an authorized representative of the Pension Plan at PSWA at (626) 279-3080.</h6>
+    </div>
+    </br>
+    <div id="EE-section" class="panel-group active" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-parent="#accordion" href="#collapseOne" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                        How long does the application process take and when should I start?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    You should start the paperwork process no later than three (3) months and no earlier than six (6) month prior to the month you wish
+                    to retire in.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a role="button" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        What are the retirement options?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body" style="padding-left: 30px;">
+                    <ul>
+                        <li type="square">Single Life Annuity</li>
+                        <li type="square">Single Life Annuity with 10 - year certain</li>
+                        <li type="square">50%  Joint and Survivor Annuity</li>
+                        <li type="square">75% Joint and Survivor Annuity</li>
+                        <li type="square">100% Joint and Survivor Annuity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Can I work in the first month after I retire?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    No, this is called the separation period, and you cannot work any hours in the first month you receive a benefit.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        How many hours can I work in a month and not forfeit my benefit?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    You are allowed to work a maximum of 40 hours per month.  If you go over you lose your benefit for the month.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingFive">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        What happens to my benefit if I get divorced?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    Depends on your settltment agreement.  If your ex-spouse is awarded an interest, the Fund must be in receipt of a QDRO
+                    (Qualified Domestic Relations Order), normally a spouse is entitled to one-half of your benefit that was accumulated during
+                    the period of marriage.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingSix">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        What is Normal Retirement?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body" style="padding-left: 30px;">
+                    <ul>
+                        <li type="square">
+                            60 years old with five (5) years of vesting service.  A vesting year is when you accumulate/earned at least
+                            500 hours of service credit in a Plan year.  1,000 hours of service prior to 1995.
+                        </li>
+                        <li type="square">Thirty (30) years of benefit service credits.</li>
+                        <li type="square">A full year of future benefit service credit means completion of at least 1650 hours of service in a Plan year.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingSeven">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        How does the retiree health subsidy work?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    You receive $15.00 subsidy for every full year of future service credit per month.  This amount is credited towards your premium
+                    for your selected level of coverage.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingEight">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        Ho long can I or my spouse remain on health coverage after retirement?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                <div class="panel-body">
+                    There are many possible variations.  Please contact the Trust Fund office to evaluate your case.Coverage ends in the first month
+                    in which you turn age 65, or you become eligible for Medicare.Please refer to the Health Summary Plan Description - Section 15.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingNine">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        Does my benefit go up if I work beyond the normal retirement age of 60?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+                <div class="panel-body">
+                    Yes, it does, but you must work at least 150 hours in re-employment in a Plan Year.  If you are under age 60, your re-employment increase will take effect January 1, of the following year in which you turn 60.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading lu" role="tab" id="headingTen">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        How does the age of my beneficiary affect my benefit?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+                <div class="panel-body">
+                    For every year your beneficiary is younger than you, your benefit amount will decrease.  Refer to the Summary Plan Description.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+﻿@using System.Threading.Tasks
+@using Abp.Web.Security.AntiForgery
+@using WebPortal.Timing
+@using WebPortal.Web.Public.Views.Shared.Components.Header
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@inject AppTimes AppTimes
+@inject IAbpAntiForgeryManager AbpAntiForgeryManager
+@{
+    Layout = null;
+    AbpAntiForgeryManager.SetCookie(Context);
+}
+<!DOCTYPE html>
+<html lang="en" @(CultureHelper.IsRtl ? "dir=\"rtl\"" : "")>
+<head>
+    <meta charset="utf-8">
+    <title>WebPortal</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    @* Fill these meta tags upon your project specification *@
+    <meta content="WebPortal" name="description">
+    <meta content="WebPortal" name="keywords">
+    <meta content="WebPortal" name="author">
+
+    @* You can enable and fill these lines according to documentation on http://ogp.me/
+        <meta property="og:site_name" content="-CUSTOMER VALUE-">
+        <meta property="og:title" content="-CUSTOMER VALUE-">
+        <meta property="og:description" content="-CUSTOMER VALUE-">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="-CUSTOMER VALUE-">
+        <meta property="og:url" content="-CUSTOMER VALUE-">*@
+
+    <link rel="shortcut icon" href="~/favicon.ico">
+
+    <environment names="Development">
+        @* Bundled: wwwroot/view-resources/Views/_Bundles/frontend-libs[-rtl].min.css *@
+        <link rel="stylesheet" href="~/assets/css/style.css" asp-append-version="true" />
+    
+    </environment>
+
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/assets/css/style.css" asp-append-version="true" />  
+    </environment>
+
+    @RenderSection("Styles", false)
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/assets/css/style.css" asp-append-version="true" />  
+    </environment>
+
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/assets/css/style.css" asp-append-version="true" />  
+    </environment>
+
+    <script type="text/javascript">
+        @* This is used to get the application's root path from javascript.
+        It's useful if you're running application in a virtual directory under IIS. *@
+        var abp = abp || {}; abp.appPath = '@ApplicationPath';
+    </script>
+
+</head>
+<body>
+
+    @await Component.InvokeAsync(typeof(HeaderViewComponent), new { currentPageName = ViewBag.CurrentPageName })
+
+            @RenderBody()
+
+    @Html.Partial("~/Views/Layout/_Footer.cshtml")
+
+
+    <environment names="Development">
+       
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/" asp-append-version="true"></script>
+    </environment>
+
+    <script type="text/javascript">
+        abp.localization.defaultSourceName = '@LocalizationSourceName';
+    </script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="~/AbpScripts/GetScripts?_v=@AppTimes.StartupTime.Ticks" type="text/javascript"></script>
+
+    <environment names="Development">
+      
+
+        
+    </environment>
+
+    <environment names="Staging,Production">
+        
+    </environment>
+
+    <script type="text/javascript">
+        $(function () {
+            Layout.init();
+        });
+    </script>
+
+    @RenderSection("Scripts", false)
+
+</body>
+
+</html>

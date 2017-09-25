@@ -1,0 +1,210 @@
+﻿@model WebPortal.Web.Models.Account.RegisterViewModel
+@using Abp.Extensions
+@using Abp.Json
+@using WebPortal.MultiTenancy
+@addTagHelper *, PaulMiami.AspNetCore.Mvc.Recaptcha
+@section Scripts
+{
+    <script>
+        window.passwordComplexitySetting = @Html.Raw(Model.PasswordComplexitySetting.ToJsonString(indented: true));
+    </script>
+
+    <environment names="Development">
+        <script src="~/view-resources/Views/Account/Register.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Account/Register.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <recaptcha-script />
+}
+<form class="register-form" asp-action="Register" method="post">
+
+    <h3>@L("SignUp")</h3>
+
+    @if (@ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">
+            <i class="fa fa-warning"></i> @ViewBag.ErrorMessage
+        </div>
+    }
+
+    <input type="hidden" name="IsExternalLogin" value="@Model.IsExternalLogin.ToString()" />
+    <input type="hidden" name="ExternalLoginAuthSchema" value="@Model.ExternalLoginAuthSchema" />
+    <input type="hidden" name="SingleSignOn" value="@Model.SingleSignIn" />
+    <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+
+    <div class="row">
+        <div class="col-md-6">
+            <p class="hint">
+                @L("ProviderInformation")
+            </p>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">@L("NameOrOrganization")</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="@L("NameOrOrganization")" name="Name" required value="@Model.Name" maxlength="@WebPortal.Authorization.Users.User.MaxNameLength" />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">@L("Surname")</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Last Name (Optional)" name="Surname" value="@Model.Surname" maxlength="@WebPortal.Authorization.Users.User.MaxSurnameLength" />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">@L("TaxId")</label>
+                <input class="form-control placeholder-no-fix input-ltr" type="text" autocomplete="off" placeholder="@L("TaxId")" name="TaxId" required value="@Model.TaxId" />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">@L("Npi")</label>
+                <input class="form-control placeholder-no-fix input-ltr" type="text" autocomplete="off" placeholder="@L("Npi")" name="Npi" required value="@Model.Npi
+                       " />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">@L("ServiceType")</label>
+                <select class="form-control placeholder-no-fix" name="ServiceType" required value="@Model.ServiceType">
+                    <option>Select Service Type</option>
+                    <option>Medical</option>
+                    <option>Dental</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">@L("Specialty")</label>
+                <select class="form-control placeholder-no-fix" name="Specialty" required value="@Model.Specialty">
+                    <option>Select Specialty</option>
+                    <option>ALLERGY AND IMMUNOLOGY</option>
+                    <option>AMBULANCE</option>
+                    <option>AMBULATORY SURGERY CENTER</option>
+                    <option>ANESTHESIOLOGY</option>
+                    <option>AUDIOLOGY</option>
+                    <option>CARDIOVASCULAR MEDICINE</option>
+                    <option>CERTIFIED REGISTERED NURSE ANESTHETIST</option>
+                    <option>CERTIFIED REGISTERED NURSE MIDWIFE</option>
+                    <option>DERMATOLOGY</option>
+                    <option>DIALYSIS CENTER</option>
+                    <option>DURABLE MED EQUIPMENT</option>
+                    <option>EMERGENCY MEDICINE</option>
+                    <option>ENDOCRINOLOGY</option>
+                    <option>FAMILY MEDICINE</option>
+                    <option>GASTROENTEROLOGY</option>
+                    <option>GENERAL HOSPITAL</option>
+                    <option>GERIATRICS</option>
+                    <option>HEMATOLOGY</option>
+                    <option>HOME HEALTH AGENCY</option>
+                    <option>HOSPICE</option>
+                    <option>IMMUNOLOGY</option>
+                    <option>INTERNAL MEDICINE</option>
+                    <option>MENTAL HEALTH COUNSELOR</option>
+                    <option>NEONATAL / PERINATAL</option>
+                    <option>NEOPLASTIC DISEASES</option>
+                    <option>NEUROLOGY</option>
+                    <option>NEUROSURGERY</option>
+                    <option>NUCLEAR MEDICINE</option>
+                    <option>NURSE PRACTITIONER (ARNP)</option>
+                    <option>OBSTETRICS & GYNECOLOGY</option>
+                    <option>OCCUPATIONAL MEDICINE</option>
+                    <option>OCCUPATIONAL THERAPIST</option>
+                    <option>ONCOLOGY</option>
+                    <option>OPHTHALMOLOGY</option>
+                    <option>OPTOMETRIST</option>
+                    <option>ORTHOPEDIC SURGERY</option>
+                    <option>OTOLARYNGOLOGY</option>
+                    <option>PATHOLOGY</option>
+                    <option>PEDIATRICS</option>
+                    <option>PHARMACY</option>
+                    <option>PHYSICAL THERAPIST</option>
+                    <option>PHYSICIAN ASSISTANT</option>
+                    <option>PREVENTATIVE MEDICINE</option>
+                    <option>PSYCHIATRY</option>
+                    <option>PSYCHOLOGY</option>
+                    <option>PULMONARY DISEASES</option>
+                    <option>RADIATION ONCOLOGY</option>
+                    <option>RADIOLOGY</option>
+                    <option>RADIOLOGY-DIAGNOSTIC</option>
+                    <option>RESPIRATORY THERAPIST</option>
+                    <option>RHEUMATOLOGY</option>
+                    <option>RHEUMATOLOGY</option>
+                    <option>SKILLED NURSING FACILITY</option>
+                    <option>SPEECH THERAPIST</option>
+                    <option>SURGERY</option>
+                    <option>UROLOGIST</option>
+                    <option>UROLOGY</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p class="hint">
+                @L("PhysicalAddress")
+            </p>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">@L("Address")</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="@L("Address")" name="Address" required value="@Model.Address" />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">@L("City")</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="@L("City")" name="City" required value="@Model.City" />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">@L("State")</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="@L("State")" name="State" required value="@Model.State" />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">@L("ZipCode")</label>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="@L("ZipCode")" name="Zip" required value="@Model.Zip" />
+            </div>
+        </div>
+    </div>
+
+    @if (!Model.IsExternalLogin)
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <p class="hint">
+                    @L("AccountInformation")
+                </p>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@L("PrimaryContact")</label>
+                    <input class="form-control placeholder-no-fix input-ltr" type="text" autocomplete="off" placeholder="@L("PrimaryContact")" name="PrimaryContact" value="@Model.PrimaryContact" required />
+                </div>
+                @*<div class="form-group">
+                        <label class="control-label visible-ie8 visible-ie9">@L("PhoneNumber")</label>
+                        <input class="form-control placeholder-no-fix input-ltr" type="text" autocomplete="off" placeholder="@L("PhoneNumber")" name="PhoneNumber" value="@Model.PhoneNumber" required />
+                    </div>*@
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@L("EmailAddress")</label>
+                    <input class="form-control placeholder-no-fix" type="email" placeholder="@L("EmailAddress")" name="EmailAddress" required value="@Model.EmailAddress" maxlength="@WebPortal.Authorization.Users.User.MaxEmailAddressLength" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <p class="hint">
+                    @L("AccountSettings")
+                </p>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@L("UserName")</label>
+                    <input class="form-control placeholder-no-fix input-ltr" type="text" autocomplete="off" placeholder="@L("UserName")" name="UserName" value="@Model.UserName" required />
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@L("Password")</label>
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="RegisterPassword" placeholder="@L("Password")" name="Password" required />
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@L("PasswordRepeat")</label>
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="@L("PasswordRepeat")" name="PasswordRepeat" required />
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (ViewBag.UseCaptcha)
+    {
+        <p class="hint">
+            @L("Captha_Hint")
+        </p>
+        <div class="form-group margin-bottom-20">
+            <recaptcha />
+        </div>
+    }
+
+    <div class="form-actions">
+        <a asp-action="Login"><button type="button" id="register-back-btn" class="btn btn-default">@L("Back")</button></a>
+        <button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right">@L("Submit")</button>
+    </div>
+</form>

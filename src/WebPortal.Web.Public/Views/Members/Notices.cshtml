@@ -1,0 +1,139 @@
+@using System.Threading.Tasks
+@using WebPortal.Web.Public.Startup
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@{
+    ViewBag.CurrentPageName = FrontEndPageNames.Notices;
+}
+@section Styles
+{
+
+}
+@section Scripts
+{
+
+}
+
+<div class="noticeTitle">
+    <div class="container">
+        <h3 style="color:#fff;"><b>Important</b> Notices</h3>
+    </div>
+</div>
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="cell-sm-3" style="background: #000; padding:30px; color:#fff; margin-bottom:15px;">
+                <p style="color:#fff; padding:15px"><b>Register to receive important notices by email</b></p>
+                <h5></h5>
+                <div id="noticeFormHolder" class="form-inline">
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" id="noticeFname" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+
+                        <input type="email" class="form-control" id="noticeEmail" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <button id="noticeForm" class="btn btn-default">Register</button>
+                    </div>
+                    <div id="form-error"></div>
+                </div>
+            </div>
+
+            <div class="cell-sm-3" style="background: #000; padding:0px; color:#fff;">
+                <p style="color:#fff; padding:15px"><b>Recent Notices</b></p>
+                <ul class="employer-information">
+                    <li>Notification of Twelve Month Rolling Enrollment Period</li>
+                    <li>Annual Funding Notice January 2016</li>
+                    <li>Notice of Credible Coverage</li>
+                    <li>Flu Shot and Shingles Vaccine Notice</li>
+                    <li>Summary of material Modifications-Breast Pumps</li>
+                    <li>Mandated Notice Concerning Your Coverage</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9">
+
+            <div class="boxnotice" style="margin-bottom:30px;">
+                <div class="noticeHeading">
+                    <div class="nheading">Notification of the Twelve (12) Month Rolling Enrollment Period</div>
+                    <div class="headingdate">March 2017</div>
+                </div>
+                <p>The Board of Trustees has made the annual open enrollment easier to use. Instead of allowing open enrollment only one time at the end of each calendar year, the Board has adopted the twelve (12) month rolling enrollment. This will be effective April 1, 2017. Therefore, you will not be receiving an open enrollment packet at the end of 2017 for you to make plan changes effective January 1, 2018. You will still receive the required notifications by the Affordable Health Care Act at the end of the year.</p>
+                <a href="\Docs\Notices\1.pdf" target="_blank" /><b>Read More</b></a></p>
+            </div>
+
+
+            <div class="boxnotice" style="margin-bottom:30px;">
+                <div class="noticeHeading">
+                    <div class="nheading">Annual Funding Notice FYE</div>
+                    <div class="headingdate">December 2016</div>
+                </div>
+                <p>This notice includes important information about the funding status of your multiemployer pension plan (the “Plan”). It also includes general information about the benefit payments guaranteed by the Pension Benefit Guaranty Corporation (“PBGC”), a federal insurance agency. All traditional pension plans (called “defined benefit pension plans”) must provide this notice every year regardless of their funding status. This notice does not mean that the Plan is terminating. It is provided for informational purposes and you are not required to respond in any way. This notice is required by federal law. This notice is for the plan year beginning January 1, 2016 and ending December 31, 2016 (“Plan Year”).</p>
+                <a href="\Docs\Notices\2.pdf" target="_blank" /><b>Read More</b></a></p>
+            </div>
+
+            <div class="boxnotice" style="margin-bottom:30px;">
+                <div class="noticeHeading">
+                    <div class="nheading">Notice of Creditable Coverage</div>
+                    <div class="headingdate">October 2016</div>
+                </div>
+                <p><b>This document is intended to serve as your Notice of Creditable Prescription Drug Coverage, as required by law.</b></br></br> <b>If you or anyone in your family is now eligible for Medicare or will become eligible for Medicare in the next year, please read this notice carefully and keep it where you can find it.</b></br></br> This notice has information about your current prescription drug coverage with the Indemnity/PPO plan or with the Kaiser plan, as well as prescription drug coverage available for people with Medicare.  It also tells you where to find more information to help you make decisions about your prescription drug coverage. </p>
+                <a href="\Docs\Notices\3.pdf" target="_blank" /><b>Read More</b></a></p>
+            </div>
+
+            <div class="boxnotice" style="margin-bottom:30px;">
+                <div class="noticeHeading">
+                    <div class="nheading">Flu Shot and Shingles Vaccine Notice</div>
+                    <div class="headingdate">October 2016</div>
+                </div>
+                <p><b>This documentThe seasonal flu is serious. It could put more than 200,000 people in the hospital and cause as many as 36,000 deaths in the U.S. this year. Flu shots are an effective way to protect you and your family. This notice does not pertain to the H1N1 “Swine Flu” vaccine. Talk to your doctor about availability and the best way to get that vaccine. Effective February 1, 2013, the Local 831 Indemnity Plan covers the shingles vaccine (Zostavax). The patient needs a hard copy or “called in” prescription from the doctor to go to the participating pharmacy and have the vaccine administered at $0 copay.</p>
+                <a href="\Docs\Notices\4.pdf" target="_blank" /><b>Read More</b></a></p>
+            </div>
+
+            <div class="boxnotice" style="margin-bottom:30px;">
+                <div class="noticeHeading">
+                    <div class="nheading">Summary of Material Modifications-Breast Pumps</div>
+                    <div class="headingdate">March 2016</div>
+                </div>
+                <p>This notice is a Summary of Material Modifications (“SMM”) and provides important information about certain changes and clarifications to the Southern California Local Union 831 Employer Health Plan (the “Plan”) that the Board of Trustees has adopted. The effective dates of such changes are noted herein. Please note that certain changes and clarifications apply only to the Indemnity PPO Plan of benefits and others apply only to the Kaiser HMO plan of benefits. The descriptions below note to which plan of benefits the change applies. If you have any questions concerning these changes or your plan of benefits, please contact the Trust Fund Office at 1 (877) 572-7005 or (626) 279-3080.  Please keep this notice with your other Fund documents for future reference.   </p>
+                <a href="\Docs\Notices\6.pdf" target="_blank" /><b>Read More</b></a></p>
+            </div>
+
+            <div class="boxnotice" style="margin-bottom:30px;">
+                <div class="noticeHeading">
+                    <div class="nheading">Mandated Notices Concerning Your Coverage</div>
+                    <div class="headingdate">March 2016</div>
+                </div>
+                <p>The Affordable Care Act requires that health plans such as the Local Union 831 Employer Health Trust Fund (Trust) provide you a report identifying the months you and any enrolled dependents had coverage from the Trust during 2015.  As required by the IRS, enclosed is the report labeled “Health Coverage”, Form 1095-B. If you received coverage from an HMO option provided through the Trust in 2015, the HMO will send you Form 1095-B. The Trust and the HMO are also required under federal law to send a copy of the report to the IRS. </p>
+                <a href="\Docs\Notices\7.pdf" target="_blank" /><b>Read More</b></a></p>
+            </div>
+
+            <div class="boxnotice" style="margin-bottom:30px;">
+                <div class="noticeHeading">
+                    <div class="nheading">Summary of Material Modifications-Retiree Eligibility Provisions</div>
+                    <div class="headingdate">March 2016</div>
+                </div>
+                <p>If you retired on or after January 1, 2007, you are eligible for retiree benefits under this Plan (referred to herein as “Retiree COBRA”) if on the date of your Actual Retirement (if before age 65), you meet each of the following special qualifications: </p>
+                <a href="\Docs\Notices\8.pdf" target="_blank" /><b>Read More</b></a></p>
+            </div>
+            <div class="boxnotice" style="margin-bottom:30px;">
+                <div class="noticeHeading">
+                    <div class="nheading">Annual Funding Notice FYE 12-31-2015</div>
+                    <div class="headingdate">December 2015</div>
+                </div>
+                <p>This is a summary of the annual report of the Southern California Local 831 - Employer Health Fund, E.I.N. 95-6047878, Plan No. 501, for the year ended December 31, 2015.  The annual report has been filed with the Employee Benefits Security Administration, U.S. Department of Labor, as required under the Employee Retirement Income Security Act of 1974 (ERISA). </p>
+                <a href="\Docs\Notices\9.pdf" target="_blank" /><b>Read More</b></a></p>
+            </div>
+            <div class="boxnotice" style="margin-bottom:30px;">
+                <div class="noticeHeading">
+                    <div class="nheading">Summary of Material Modifications-Requirements for Continued Eligibility for Retiree COBRA</div>
+                    <div class="headingdate">June 2015</div>
+                </div>
+                <p>Because of the significant and increasing expense to the Health Plan of collecting co-payments from participants, the Trustees have decided to require the mandatory deduction of those co-payments from your pension check. Money spent on administration is money not available for benefits.</p>
+                <a href="\Docs\Notices\10.pdf" target="_blank" /><b>Read More</b></a></p>
+            </div>
+        </div>
+    </div>
+</div>

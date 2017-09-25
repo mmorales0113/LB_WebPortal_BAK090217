@@ -1,0 +1,262 @@
+﻿<div class="portlet light margin-bottom-0">
+
+    <div class="portlet-body">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <!-- BEGIN PORTLET-->
+
+                <div class="portlet light form-fit bordered">
+
+                    <div class="portlet-title">
+
+                        <div class="caption">
+
+                            <i class="icon-social-dribbble font-green"></i>
+
+                            <span class="caption-subject font-green bold uppercase">Claims Information</span>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="portlet-body form">
+
+                        <!-- BEGIN FORM-->
+
+                        <div class="form-horizontal form-bordered">
+                            <form novalidate name="form" ng-submit="vm.getClaim()">
+                                <div class="form-body">
+
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <h5>Coverage type</h5>
+                                            <select id="coverageType" class="bs-select form-control input-small" data-style="blue" style="margin-bottom:10px" ng-model="vm.claim.coverageType" required>
+                                                <option value="1">Medical</option>
+                                                <option value="2">Dental</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Employee SSN or Blue Cross ID</label>
+                                        <div class="col-md-4">
+                                            <input name="identifier" class="form-control" id="identifier" type="text" ng-pattern='/^(\d{3}[A,a,M,m]\d{5}|\d{9})$/'
+                                                   required ng-model="vm.claim.identifier" />
+                                            <input type="hidden" id="idVal" value="0">
+                                        </div>
+                                        <div ng-show="form.identifier.$error.pattern" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:red"><p style="color:#fff">X</p></div>
+                                        </div>
+                                        <div ng-show="form.identifier.$valid" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:green"><i class="fa fa-check" style="color:#fff"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label class="control-label col-md-3">Patient's Date of Birth</label>
+
+                                        <div class="col-md-4">
+                                            <div></div>
+                                            <input name="dob" class="form-control" id="dob" type="text" ng-pattern='/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/'
+                                                   required ng-model="vm.claim.dob" mask="19/39/2917" />
+                                            <input type="hidden" id="dobVal" value="0">
+                                        </div>
+                                        <div ng-show="form.dob.$error.pattern" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:red"><p style="color:#fff">X</p></div>
+                                        </div>
+                                        <div ng-show="form.dob.$valid" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:green"><i class="fa fa-check" style="color:#fff"></i></div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Patient's First Name</label>
+                                        <div class="col-md-4">
+                                            <input name="name" class="form-control" id="name" type="text" ng-pattern=''
+                                                   required ng-model="vm.claim.name" />
+                                            <input type="hidden" id="idVal" value="0">
+                                        </div>
+                                        <div ng-show="form.name.$error.pattern" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:red"><p style="color:#fff">X</p></div>
+                                        </div>
+                                        <div ng-show="form.name.$valid" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:green"><i class="fa fa-check" style="color:#fff"></i></div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label class="control-label col-md-3">From Date of Service</label>
+
+                                        <div class="col-md-4">
+                                            <div></div>
+                                            <input name="dos" class="form-control" id="dos" type="text" ng-pattern='/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/'
+                                                   required ng-model="vm.claim.dos" mask="19/39/2017" />
+                                            <input type="hidden" id="dobVal" value="0">
+                                        </div>
+                                        <div ng-show="form.dos.$error.pattern" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:red"><p style="color:#fff">X</p></div>
+                                        </div>
+                                        <div ng-show="form.dos.$valid" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:green"><i class="fa fa-check" style="color:#fff"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label class="control-label col-md-3">To Date of Service</label>
+
+                                        <div class="col-md-4">
+                                            <div></div>
+                                            <input name="todos" class="form-control" id="todos" type="text" ng-pattern='/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/'
+                                                   required ng-model="vm.claim.todos" mask="19/39/2017" />
+                                            <input type="hidden" id="dobVal" value="0">
+                                        </div>
+                                        <div ng-show="form.todos.$error.pattern" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:red"><p style="color:#fff">X</p></div>
+                                        </div>
+                                        <div ng-show="form.todos.$valid" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:green"><i class="fa fa-check" style="color:#fff"></i></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+
+                                        <label class="control-label col-md-3">Total Billed Amount</label>
+
+                                        <div class="col-md-4">
+                                            <div></div>
+                                            <input name="billed" class="form-control" id="billed" type="text" ng-pattern='/^(\$\d*[.]\d{2}|\d*[.]\d{2})$/'
+                                                   required ng-model="vm.claim.billed" mask="9?9?9?9?9?9?9?9?9?9?.99" />
+
+                                            <input type="hidden" id="billed" value="0">
+                                        </div>
+                                        <div ng-show="form.billed.$error.pattern" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:red"><p style="color:#fff">X</p></div>
+                                        </div>
+                                        <div ng-show="form.billed.$valid" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:green"><i class="fa fa-check" style="color:#fff"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+
+                                    <div class="row">
+
+                                        <div class="col-md-offset-3 col-md-9">
+
+                                            
+                                                <input type="submit" value="Submit"
+                                                       class="btn btn-info"
+                                                       ng-disabled="form.$invalid" />
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <!-- END FORM-->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="portlet light margin-bottom-0" ng-show="vm.notFound == true">
+    <div class="m-heading-1 border-red m-bordered row">
+        <div class="col-md-12"><h3 style="margin-bottom:0px">We are unable to locate the requested information. Please make sure all of the requested information is correct.</h3></div>
+    </div>
+</div>
+<div class="portlet light margin-bottom-0" style="margin-top:20px"ng-show="vm.isMedical == true" >
+     <h3>Patient Name: {{vm.result.patientName}}   DOB: {{vm.result.dob}}</h3>
+     <h5>Member ID: {{vm.result.altId}}</h5>
+    <div class="portlet-body">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <!-- BEGIN PORTLET-->
+
+                <div class="portlet light form-fit bordered col-md-9"> 
+
+                    <div class="portlet-title">
+
+                        <div class="caption">
+
+                            <i class="fa fa-user-md font-green"></i>
+
+                            <span class="caption-subject font-green bold uppercase">Claim: {{vm.result.claimNumber}} </span>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="portlet-body form">
+
+                        <!-- BEGIN FORM-->
+
+                        <div class="form-horizontal form-bordered">
+                           <div class="col-md-2">
+                               <h5>Date of Service</h5><p>{{vm.result.fromDOS}} - {{vm.result.todos}}</p>
+                           </div>
+                           <div class="col-md-4">
+                               <h5>Provider Name</h5><p>{{vm.result.payeeName}}</p>
+                           </div>
+                            <div class="col-md-1">
+                                <h5>Billed</h5><p>${{vm.result.billed}}</p>
+                            </div>
+                            <div class="col-md-1">
+                                <h5>Allowed</h5><p>${{vm.result.allowed}}</p>
+                            </div>
+                            <div class="col-md-1">
+                                <h5>Paid</h5><p>${{vm.result.paid}}</p>
+                            </div>
+                           
+
+
+                        </div>
+
+                        <!-- END FORM-->
+
+                    </div>
+
+                </div>
+                <div  class="col-md-3 paymentSummary">
+                    <table>
+                        <tr><td><h3>Payment Summary</h3></td></tr>
+                        <tr><td><p><b>Issued Date:</b> {{vm.result.issuedDate}}</p></td></tr>
+                        <tr><td><p><b>Check Amount:</b> ${{vm.result.checkAmount}}</p></td></tr>
+                        <tr><td><p><b>Check Number:</b>{{vm.result.checkNumber}}</p></td></tr>
+                        <tr><td><p><b>Patient Account Number:</b>{{vm.result.patientAccount}}</p></td></tr>
+                    </table>
+                </div>
+
+
+            </div>
+            <div class="col-md-12">
+               <h4 ng-show="vm.isEOB == false">EOB not available. </h4>
+                <h4 ng-show="vm.isEOB == true"><a ng-href="https://sccl.pswadmin.com/eob/{{vm.result.claimNumber}}{{vm.postLink}}"><i class="fa fa-file-pdf-o font-red"></i></a>&nbsp;Download Explanation of Benefits </h4>
+            </div>
+        </div>
+
+    </div>
+
+</div>

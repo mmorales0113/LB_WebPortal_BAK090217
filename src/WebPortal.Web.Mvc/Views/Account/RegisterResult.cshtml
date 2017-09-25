@@ -1,0 +1,25 @@
+﻿@model WebPortal.Web.Models.Account.RegisterResultViewModel
+<h4>@L("SuccessfullyRegistered").</h4>
+<ul>
+    @*<li><span class="text-muted">@L("NameSurname"):</span> @Model.NameAndSurname</li>
+    <li><span class="text-muted">@L("TenancyName"):</span> @Model.TenancyName</li>*@
+    <li><span class="text-muted">@L("UserName"):</span> @Model.UserName</li>
+    <li><span class="text-muted">@L("EmailAddress"):</span> @Model.EmailAddress</li>
+</ul>
+<form class="forget-form"  >
+    @if (Model.IsEmailConfirmationRequired)
+    {
+        <div class="alert alert-warning" role="alert">
+            @L("ConfirmationMailSentPleaseClickLinkInTheEmail", Model.EmailAddress)
+        </div>
+    }
+    @if (!Model.IsActive || Model.ServiceType == "Dental")
+    {
+        <div class="alert alert-warning" role="alert">
+            @L("YourAccountIsWaitingToBeActivatedByAdmin")
+        </div>
+    }
+    <div class="form-actions">
+        <a asp-action="Login"><button type="button" id="back-btn" class="btn btn-default">@L("Back")</button></a>
+    </div>
+</form>

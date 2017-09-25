@@ -1,0 +1,156 @@
+@using System.Threading.Tasks
+@using WebPortal.Web.Public.Startup
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@{
+    ViewBag.CurrentPageName = FrontEndPageNames.Cobra;
+}
+@section Styles
+{
+
+}
+@section Scripts
+{
+
+}
+
+@Html.Partial("~/Views/Members/_HwSideBar.cshtml")
+<div class="cell-lg-9">
+    <div class="range">
+
+        <div class="cell-xs-24 cell-md-12" style="margin-bottom:35px;">
+            <article class="icon-box-vertical">
+                <h4 class="icon-box-header" style="color:#000;">Continuation Coverage Rights Under COBRA</h4>
+                <div class="range">
+                    <div class="cell-md-4" style="margin-bottom:35px;">
+                        <img src="\assets\images\2017-cobra-rates.png" />
+                    </div>
+                    <div class=" cell-md-8" style="margin-bottom:35px;">
+                        <p>COBRA continuation coverage is a temporary extension of coverage under this Plan. <b>The Following explains COBRA continuation coverage, when it may become available to you and your family, and what you need to do to protect your right to get it.</b> When you become eligible for COBRA, you may also become eligible for other coverage options that may cost less than COBRA continuation coverage.</br></br> The right to COBRA continuation coverage was created by a federal law, the Consolidated Omnibus Budget Reconciliation Act of 1985 (COBRA).  COBRA continuation coverage can become available to you and other members of your family when group health coverage would otherwise end.  For more information about your rights and obligations under the Plan and under federal law, you should review this Summary Plan Description or contact the Trust Fund Office.</p>
+                    </div>
+                    <div class=" cell-md-12" style="margin-bottom:35px;">
+                        <b>You may have other options available to you when you lose group health coverage.</b>  For example, you may be eligible to buy an individual plan through the Health Insurance Marketplace.  By enrolling in coverage through the Marketplace, you may qualify for lower costs on your monthly premiums and lower out-of-pocket costs.  Additionally, you may qualify for a 30-day special enrollment period for another group health plan for which you are eligible (such as a spouse’s plan), even if that plan generally doesn’t accept late enrollees.
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="cell-xs-24 cell-md-12" style="margin-bottom:35px;">
+            <div id="EE-section" class="panel-group active" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-parent="#accordion" href="#collapseOne" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                                What is COBRA continuation coverage?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            COBRA continuation coverage is a continuation of Plan coverage when it would otherwise end because of a life event.  This is also called a “qualifying event.”  Specific qualifying events are listed later in this notice.  After a qualifying event, COBRA continuation coverage must be offered to each person who is a “qualified beneficiary.”  You, your spouse, and your Dependent children could become qualified beneficiaries if coverage under the Plan is lost because of the qualifying event.  Under this Plan, qualified beneficiaries who elect COBRA continuation coverage must pay for COBRA continuation coverage.</br></br>If you’re an Employee, you’ll become a qualified beneficiary if you lose your coverage under the Plan because of the following qualifying events:
+                            <ul style="margin-left:35px">
+                                <li type="square">Your hours of employment are reduced, or</li>
+                                <li type="square">Your employment ends for any reason other than your gross misconduct.</li>
+                            </ul>
+                            </br>If you’re the spouse of an Employee, you’ll become a qualified beneficiary if you lose your coverage under the Plan because of the following qualifying events:</br></br>
+                            <ul style="margin-left:35px">
+                                <li type="square">Your spouse dies;</li>
+                                <li type="square">Your spouse’s hours of employment are reduced;</li>
+                                <li type="square">Your spouse’s employment ends for any reason other than his or her gross misconduct;</li>
+                                <li type="square">Your spouse becomes entitled to Medicare benefits (under Part A, Part B, or both); or</li>
+                                <li type="square">You become divorced or legally separated from your spouse.</li>
+                            </ul>
+                            </br>Your Dependent children will become qualified beneficiaries if they lose coverage under this Plan because of the following qualifying events:
+                            <ul style="margin-left:35px">
+                                <li type="square">The parent-Employee dies;</li>
+                                <li type="square">The parent-Employee’s hours of employment are reduced;</li>
+                                <li type="square">The parent-Employee’s employment ends for any reason other than his or her gross misconduct;</li>
+                                <li type="square">The parent-Employee becomes entitled to Medicare benefits (Part A, Part B, or both);</li>
+                                <li type="square">The parents become divorced or legally separated; or</li>
+                                <li type="square">The child stops being eligible for coverage under the Plan as a “Dependent child.”</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a role="button" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                When is COBRA continuation coverage available?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            The Plan will offer COBRA continuation coverage to qualified beneficiaries only after the Trust Fund Office has been notified that a qualifying event has occurred.  The employer must notify the Trust Fund Office of the following qualifying events:</br></br>
+                            <ul style="margin-left:35px">
+                                <li type="square">The end of employment or reduction of hours of employment; </li>
+                                <li type="square">Death of the Employee; </li>
+                                <li type="square">The Employee’s becoming entitled to Medicare benefits (under Part A, Part B, or both).</li>
+                            </ul>
+                            </br><b>For all other qualifying events (divorce or legal separation of the Employee and spouse or a Dependent child’s losing eligibility for coverage as a Dependent child), you must notify the Trust Fund Office within 60 days  after the qualifying event occurs.  You must provide this notice to the Trust Fund Office at P.O. Box 5528, El Monte, California 91734.</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                How is COBRA continuation coverage provided?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Once the Plan Administrator receives notice that a qualifying event has occurred, COBRA continuation coverage will be offered to each of the qualified beneficiaries.  Each qualified beneficiary will have an independent right to elect COBRA continuation coverage.  Covered Employees may elect COBRA continuation coverage on behalf of their spouses, and parents may elect COBRA continuation coverage on behalf of their children.
+                            </br></br>COBRA continuation coverage is a temporary continuation of coverage that generally lasts for 18 months due to employment termination or reduction of hours of work.  Certain qualifying events, or a second qualifying event during the initial period of coverage, may permit a beneficiary to receive a maximum of 36 months of coverage.
+                            </br></br>There are also ways in which this 18-month period of COBRA continuation coverage can be extended:
+                            </br></br><b><i>Disability extension of 18-month period of COBRA continuation coverage</i></b></br>
+                            If you or anyone in your family covered under the Plan is determined by Social Security Administration (SSA) to be disabled and you notify the Plan Administrator in a timely fashion, you and your entire family may be entitled to get up to an additional 11 months of COBRA continuation coverage, for a maximum of 29 months.  The disability would have to have started at some time before the 60th day of COBRA continuation coverage and must last at least until the end of the 18-month period of COBRA continuation coverage.  You must notify the Trust Fund Office in writing of your disability and SSA determination within 60 days of the SSA determination and before the end of the first 18 months of your continuation coverage.  Each qualified beneficiary who has elected continuation coverage will be entitled to the 11-month disability extension if one of them qualifies.  If the qualified beneficiary is determined to no longer be disabled under the SSA, you must notify the Plan in writing of that fact within 30 days after that determination.  Notifications should be mailed to the Trust Fund Office at P.O. Box 5528, El Monte, California 91734.
+                            </br></br><b><i>Second qualifying event extension of 18-month period of continuation coverage</i></b></br>
+                            If your family experiences another qualifying event during the 18 months of COBRA continuation coverage, the spouse and Dependent children in your family can get up to 18 additional months of COBRA continuation coverage, for a maximum of 36 months, if the Plan is properly notified about the second qualifying event.  This extension may be available to the spouse and any Dependent children getting COBRA continuation coverage if the Employee or former Employee dies; becomes entitled to Medicare benefits (under Part A, Part B, or both); gets divorced or legally separated; or if the Dependent child stops being eligible under the Plan as a Dependent child.  This extension is only available if the second qualifying event would have caused the spouse or Dependent child to lose coverage under the Plan had the first qualifying event not occurred.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Are there other coverage options besides COBRA Continuation Coverage?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Yes.  Instead of enrolling in COBRA continuation coverage, there may be other coverage options for you and your family through the Health Insurance Marketplace, Medicaid, or other group health plan coverage options (such as a spouse’s plan) through what is called a “special enrollment period.”  Some of these options may cost less than COBRA continuation coverage.   You can learn more about many of these options at www.healthcare.gov.
+                            </br></br><b><i>Cal-COBRA</i></b></br>
+                            If at the time of a qualifying event your medical and prescription drug coverage is provided through a health maintenance organization (HMO), your coverage which would otherwise end under federal law may be required to be extended by the HMO to a total of 36 months under California law.  You must contact the HMO directly and immediately upon the expiration of your federal COBRA coverage to obtain eligibility information for Cal-COBRA and how to apply for it.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading lu" role="tab" id="headingFive">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Have questions?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Questions concerning this Plan or your COBRA continuation coverage rights should be addressed to the contact or contacts identified below.  For more information about your rights under the Employee Retirement Income Security Act (ERISA), including COBRA, the Patient Protection and Affordable Care Act, and other laws affecting group health plans, contact the nearest Regional or District Office of the U.S.  Department of Labor’s Employee Benefits Security Administration (EBSA) in your area or visit <a href="http://www.dol.gov/ebsa" target="_blank" />www.dol.gov/ebsa</a>.  (Addresses and phone numbers of Regional and District EBSA Offices are available through EBSA’s website.)  For more information about the Marketplace, visit <a href="http://www.HealthCare.gov" target="_blank" />www.HealthCare.gov.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+</div>
+            </div>
+          </div>
+    </section>
+</div>

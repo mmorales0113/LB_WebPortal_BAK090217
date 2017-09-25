@@ -1,0 +1,207 @@
+@using System.Threading.Tasks
+@using WebPortal.Web.Public.Startup
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@{
+    ViewBag.CurrentPageName = FrontEndPageNames.HealthForms;
+}
+@section Styles
+{
+
+}
+@section Scripts
+{
+
+}
+<div class="noticeTitle">
+    <div class="container">
+        <h3 style="color:#fff;"><b>Health Plan</b></h3>
+        <p>Participant Forms</p>
+    </div>
+</div>
+<div class="row">
+    <section class="section-top-40 section-bottom-66 section-sm-top-87 section-sm-bottom-95">
+
+        <div class="shell">
+            <div class="range range-sm-center range-md-left">
+                <div class="cell-sm-6 cell-md-4 offset-top-30 offset-md-top-0" style="margin-bottom:15px;">
+                    <article class="post-modern" style="border: 1px solid #0f73bc;">
+                        <div class="post-header">
+                            <h5><a href="\Docs\HealthPlan\2017-Enrollment-Change-Form.pdf" target="_blank">Enrollment Change Form</a></h5>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-inset">
+                                <p>Enrollment Change Form Request Rev. September 2015</p>
+                            </div>
+                        </div>
+                        <div class="post-footer" style="background-color:#0f73bc;">
+                            <div class="post-meta">
+                                <ul class="post-list">
+
+                                    <li class="object-inline">
+                                        <span class="icon icon-xxs icon-gray-base material-icons-library_books" style="color:#fff;"></span>
+                                        <ul class="list-tags-inline">
+                                            <li style="color:#fff;"><a href="\Docs\HealthPlan\2017-Enrollment-Change-Form.pdf" target="_blank">Full Document</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cell-sm-6 cell-md-4 offset-top-30 offset-md-top-0" style="margin-bottom:15px;">
+                    <article class="post-modern" style="border: 1px solid #0f73bc;">
+                        <div class="post-header">
+                            <h5><a href="\Docs\HealthPlan\Change-of-Address-Request-Form.pdf" target="_blank">Change of Address Request Form</a></h5>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-inset">
+                                <p>Employer Health Plan Trust Fund/ Employer Pension Plan Change of Address Request</p>
+                            </div>
+                        </div>
+                        <div class="post-footer" style="background-color:#0f73bc;">
+                            <div class="post-meta">
+                                <ul class="post-list">
+
+                                    <li class="object-inline">
+                                        <span class="icon icon-xxs icon-gray-base material-icons-library_books" style="color:#fff;"></span>
+                                        <ul class="list-tags-inline">
+                                            <li style="color:#fff;"><a href="\Docs\HealthPlan\Change-of-Address-Request-Form.pdf" target="_blank">Full Document</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cell-sm-6 cell-md-4 offset-top-30 offset-md-top-0" style="margin-bottom:15px;">
+                    <article class="post-modern" style="border: 1px solid #0f73bc;">
+                        <div class="post-header">
+                            <h5><a href="\Docs\HealthPlan\Local-831-Employer-Trust-Funds-Health-Beneficiary-Card.pdf" target="_blank">Health Beneficiary Card</a></h5>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-inset">
+                                <p>Local 831 Employer Trust Funds Health Beneficiary Card</p>
+                            </div>
+                        </div>
+                        <div class="post-footer" style="background-color:#0f73bc;">
+                            <div class="post-meta">
+                                <ul class="post-list">
+
+                                    <li class="object-inline">
+                                        <span class="icon icon-xxs icon-gray-base material-icons-library_books" style="color:#fff;"></span>
+                                        <ul class="list-tags-inline">
+                                            <li style="color:#fff;"><a href="\Docs\HealthPlan\Local-831-Employer-Trust-Funds-Health-Beneficiary-Card.pdf" target="_blank">Full Document</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cell-sm-6 cell-md-4 offset-top-30 offset-md-top-0" style="margin-bottom:15px;">
+                    <article class="post-modern" style="border: 1px solid #0f73bc;">
+                        <div class="post-header">
+                            <h5><a href="\Docs\HealthPlan\Retiree-Benefit-Selection-Form.pdf" target="_blank">Retiree Benefit Selection Form</a></h5>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-inset">
+                                <p>Selection Form</p>
+                            </div>
+                        </div>
+                        <div class="post-footer" style="background-color:#0f73bc;">
+                            <div class="post-meta">
+                                <ul class="post-list">
+
+                                    <li class="object-inline">
+                                        <span class="icon icon-xxs icon-gray-base material-icons-library_books" style="color:#fff;"></span>
+                                        <ul class="list-tags-inline">
+                                            <li style="color:#fff;"><a href="\Docs\HealthPlan\Retiree-Benefit-Selection-Form.pdf" target="_blank">Full Document</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cell-sm-6 cell-md-4 offset-top-30 offset-md-top-0" style="margin-bottom:15px;">
+                    <article class="post-modern" style="border: 1px solid #0f73bc;">
+                        <div class="post-header">
+                            <h5><a href="\Docs\HealthPlan\Step-Child-Declaration-Forms.pdf" target="_blank">Declaration Form</a></h5>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-inset">
+                                <p>Declaration of Employee Concerning Step Child</p>
+                            </div>
+                        </div>
+                        <div class="post-footer" style="background-color:#0f73bc;">
+                            <div class="post-meta">
+                                <ul class="post-list">
+
+                                    <li class="object-inline">
+                                        <span class="icon icon-xxs icon-gray-base material-icons-library_books" style="color:#fff;"></span>
+                                        <ul class="list-tags-inline">
+                                            <li style="color:#fff;"><a href="\Docs\HealthPlan\Step-Child-Declaration-Forms.pdf" target="_blank">Full Document</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cell-sm-6 cell-md-4 offset-top-30 offset-md-top-0" style="margin-bottom:15px;">
+                    <article class="post-modern" style="border: 1px solid #0f73bc;">
+                        <div class="post-header">
+                            <h5><a href="\Docs\HealthPlan\aig-proof-of-death-claim-form.pdf" target="_blank">Claim Form</a></h5>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-inset">
+                                <p>Proof of Death Claim Form</p>
+                            </div>
+                        </div>
+                        <div class="post-footer" style="background-color:#0f73bc;">
+                            <div class="post-meta">
+                                <ul class="post-list">
+
+                                    <li class="object-inline">
+                                        <span class="icon icon-xxs icon-gray-base material-icons-library_books" style="color:#fff;"></span>
+                                        <ul class="list-tags-inline">
+                                            <li style="color:#fff;"><a href="\Docs\HealthPlan\aig-proof-of-death-claim-form.pdf" target="_blank">Full Document</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="cell-sm-6 cell-md-4 offset-top-30 offset-md-top-0" style="margin-bottom:15px;">
+                    <article class="post-modern" style="border: 1px solid #0f73bc;">
+                        <div class="post-header">
+                            <h5><a href="\docs\disability\Local-831-Disability-Form-Rev-7-2017.pdf" target="_blank">Disability Form</a></h5>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-inset">
+                                <p>Medical Proof of Disability Form</p>
+                            </div>
+                        </div>
+                        <div class="post-footer" style="background-color:#0f73bc;">
+                            <div class="post-meta">
+                                <ul class="post-list">
+
+                                    <li class="object-inline">
+                                        <span class="icon icon-xxs icon-gray-base material-icons-library_books" style="color:#fff;"></span>
+                                        <ul class="list-tags-inline">
+                                            <li style="color:#fff;"><a href="\docs\disability\Local-831-Disability-Form-Rev-7-2017.pdf" target="_blank">Full Document</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

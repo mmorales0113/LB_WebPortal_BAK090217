@@ -1,0 +1,69 @@
+@using System.Threading.Tasks
+@using WebPortal.Web.Public.Startup
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@{
+    ViewBag.CurrentPageName = FrontEndPageNames.Notices;
+}
+@section Styles
+{
+
+}
+@section Scripts
+{
+
+}
+@Html.Partial("~/Views/Members/_HwSideBar.cshtml")
+<div class="cell-lg-9">
+    <div class="range">
+        <div class="cell-xs-24 cell-md-12" style="margin-bottom:35px;">
+            <img src="\assets\theme\images\self-pay.jpg" />
+            <article class="icon-box-vertical">
+                <h5 class="icon-box-header" style="margin-top:35px;"><a href="\health-and-welfare-reference"><b>Self-Pay</b>| Buy-up</a></h5>
+                <p>
+                    If you have met the standards for initial qualification and are eligible for coverage, the self-pay/ buy-up option may be available to you.  This option allows you to maintain coverage when you do not have enough Benefit Credits through hours worked or Reserve Benefit Credits banked to pay for coverage for the next month.  If you do not use this option, your coverage will be terminated unless you elect coverage provided through <a href="\cobra">COBRA</a>
+                    </br></br>Self-payment must be made to the Trust Fund Office prior to the month for which coverage is desired and is limited to a six consecutive month period.
+                    </br></br>Rather than self-pay for the full contribution amount for a given month, you may purchase up to 50% of your required hours to continue your eligibility.  You must have at least 50% of the Benefit Credits required for the Level of Coverage you have selected.
+                    Estimate the amount it would cost you to buy-up for coverage:
+                </p>
+                <div id="calc-holder" class="cell-sm-7 cell-md-5 cell-lg-4 text-center text-sm-left">
+
+                    <div id="calc-final" class="block-shadow offset-top-40 text-center">
+                        <div class="block-inner">
+                            <p class="h7">Buy-up Estimator</p>
+                        </div>
+                        <div class="rd-mailform form-modern form-darker offset-top-40" novalidate="novalidate">
+                            <div class="block-inner">
+                                <h5>Select Plan Level</h5>
+                                <div class="form-group">
+                                    <select>
+                                        <option value="1">Plan 1</option>
+                                        <option value="1">Plan 1</option>
+                                        <option value="2">Plan 2</option>
+                                        <option value="3">Plan 3</option>
+                                        <option value="4">Plan 4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group offset-top-22">
+                                    <input id="credits" type="text" placeholder="Enter your current banked benefit credits" name="credits" class="form-control form-control-has-validation"><span class="form-validation"></span>
+                                </div>
+                                <div id="form-error"></div>
+                            </div>
+                            <div class="offset-top-30 offset-sm-top-60">
+                                <div id="calculate" class="btn btn-primary btn-round-bottom btn-block">
+                                    Calculate Estimated Buy Up Amount</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+          </div>
+    </section>
+</div>

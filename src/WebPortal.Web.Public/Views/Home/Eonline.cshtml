@@ -1,0 +1,63 @@
+﻿@using System.Threading.Tasks
+@using WebPortal.Web.Public.Startup
+@using CultureHelper = WebPortal.Localization.CultureHelper
+@model WebPortal.Web.Public.Models.RegisterModel
+@{
+    ViewBag.CurrentPageName = FrontEndPageNames.Eonline;
+}
+@section Styles
+{
+}
+@section Scripts
+{
+}
+
+<div class="row">
+    <section class="section-top-40 section-bottom-66 section-sm-top-87 section-sm-bottom-95">
+        <div class="shell">
+            <div class="range">
+                @Html.Partial("~/Views/Layout/_Esidebar.cshtml")
+                <div class="cell-sm-9">
+                    <div class="row EmployerForm">
+                        <div class="shell">
+
+
+                               <form id="employerSignupForm" asp-action="Register" method="post">
+                                  
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">@L("NameOrOrganization")</label>
+                                        <input class="form-control placeholder-no-fix" type="text" placeholder="@L("NameOrOrganization")" name="EmployerName" value="@(Model.EmployerName ?? "")"/>                                      
+                                    </div>
+                                   <div class="form-actions">
+                                       <button type="button" class="btn btn-default">Submit</button>
+                                   </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

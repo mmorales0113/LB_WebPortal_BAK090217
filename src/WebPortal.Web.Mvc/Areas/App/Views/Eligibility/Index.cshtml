@@ -1,0 +1,42 @@
+﻿@using System.Threading.Tasks
+@using WebPortal.Tenants.Dashboard.Dto
+@using WebPortal.Web.Areas.App.Startup
+@{
+    ViewBag.CurrentPageName = AppPageNames.Tenant.Eligibility;
+}
+
+@section Scripts
+{
+    <environment names="Development">
+        <script src="~/lib/angular/angular.js"></script>
+        <script src="~/lib/angular-mask/dist/ngMask.js"></script>
+        <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="~/app/eligibility/lb/eligibilityApp.js"></script>
+        <script src="~/app/eligibility/lb/EligibilityController.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/lib/angular/angular.min.js"></script>
+        <script src="~/lib/angular-mask/dist/ngMask.min.js"></script>
+        <script src="~/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="~/app/eligibility/lb/eligibilityApp.js"></script>
+        <script src="~/app/eligibility/lb/EligibilityController.js"></script>
+    </environment>
+}
+
+<div class="row margin-bottom-5">
+    <div class="col-xs-6">
+        <div class="page-head">
+            <div class="page-title">
+                <h1>
+                    <span>@L("Eligibility")</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-app="eligibilityApp" ui-view>
+
+</div>
+

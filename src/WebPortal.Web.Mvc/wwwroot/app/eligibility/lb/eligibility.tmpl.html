@@ -1,0 +1,3715 @@
+﻿<div class="portlet light margin-bottom-0">
+
+    <div class="portlet-body">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <!-- BEGIN PORTLET-->
+
+                <div class="portlet light form-fit bordered">
+
+                    <div class="portlet-title">
+
+                        <div class="caption">
+
+                            <i class="icon-social-dribbble font-green"></i>
+
+                            <span class="caption-subject font-green bold uppercase">Patient Information</span>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="portlet-body form">
+
+                        <!-- BEGIN FORM-->
+
+                        <div class="form-horizontal form-bordered">
+                            <form novalidate name="form" ng-submit="vm.getElig()">
+                                <div class="form-body">
+
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <h5>Coverage Type</h5>
+                                            <select id="coverageType" class="bs-select form-control input-small" data-style="blue" style="margin-bottom:10px" ng-model="vm.elig.coverageType" required>
+                                                <option value="1">Medical</option>
+                                                <option value="2">Dental</option>
+                                                <option value="4">Prescription</option>
+                                                <option value="3">Vision</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label class="control-label col-md-3">Patient's Date of Birth</label>
+
+                                        <div class="col-md-4">
+                                            <div></div>
+                                            <input name="dob" class="form-control" id="dob" type="text" ng-pattern='/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/'
+                                                   required ng-model="vm.elig.dob" mask="19/39/2017"/>
+                                            <span class="help-block">Patient's date of birth MM/DD/YYYY</span>
+                                            <input type="hidden" id="dobVal" value="0">
+                                        </div>
+                                        <div ng-show="form.dob.$error.pattern" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:red"><p style="color:#fff">X</p></div>
+                                        </div>
+                                        <div ng-show="form.dob.$valid" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:green"><i class="fa fa-check" style="color:#fff"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Insured Employee SSN or Blue Cross ID</label>
+                                        <div class="col-md-4">
+                                            <input name="identifier" class="form-control" id="identifier" type="text" ng-pattern='/^(\d{3}[A,a,M,m]\d{5}|\d{9})$/'
+                                                   required ng-model="vm.elig.identifier" />
+                                            <span class="help-block">SSN 123456789 or Blue Cross ID 123A56789 or 123M56789</span>
+                                            <input type="hidden" id="idVal" value="0">
+                                        </div>
+                                        <div ng-show="form.identifier.$error.pattern" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:red"><p style="color:#fff">X</p></div>
+                                        </div>
+                                        <div ng-show="form.identifier.$valid" class="col-md-4">
+                                            <div class="btn btn-circle btn-icon-only btn-default" style="background-color:green"><i class="fa fa-check" style="color:#fff"></i></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+
+                                    <div class="row">
+
+                                        <div class="col-md-offset-3 col-md-9">
+
+                                            <div class="form-group">
+                                                <input type="submit" value="Submit"
+                                                       class="btn btn-info"
+                                                       ng-disabled="form.$invalid" />
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- END FORM-->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="eligForm">
+    <div class="portlet light margin-bottom-0" ng-show="vm.notFound == true">
+        <div class="m-heading-1 border-red m-bordered row">
+            <div class="col-md-12"><h3 style="margin-bottom:0px">We are unable to locate the requested information. Please contact customer service at (626) 279-3000.</h3></div>
+        </div>
+    </div>
+    <div id="eligForm" ng-show="vm.isEligible == true">
+        <div class="portlet light margin-bottom-0">
+            <div class="alert alert-warning" role="alert">To print desired benefit uncollapse section by clicking the arrow.</div>
+            <div class="m-heading-1 border-green m-bordered row">
+                <div class="col-md-3"><h3 style="margin-bottom:0px"> {{vm.result.patientName}}</h3><p style="margin-top:0px; margin-bottom:0px"><b>Patient's Name</b></p><p style="margin-top:0px">{{vm.result.dob}}</p></div>
+                <div class="col-md-3"><p><b>Plan Type:</b> {{vm.result.planType}}<br /><b>Transaction</b> #{{vm.result.transactionNumber}}<br /><b>Status:</b> Eligible<br /> <b>Coverage Type:</b> {{vm.result.serviceType}}<br /> <b>Eligible Month:</b> {{vm.result.eligibleMonth}}</p></div>
+                <div class="col-md-3" ng-show="vm.KSVS == true"><p><b>Description:</b> Exams through Kaiser HMO<br /><b>Supplies:</b> Vision supplies through <br />Blue Vision (800)723-0515</p></div>
+                <div class="col-md-3" ng-show="vm.BlUEVS == true"><p><b>Description:</b> Blue Vision (800)723-0515</p></div>
+                <div class="col-md-3" ng-show="vm.OPTRX == true"><p><b>PhoneNumber:</b> (800)797-9791<br /><b>BIN:</b> 610494<br /><b>PCN:</b> 9999<br /><b>GRP:</b> SCLF</p></div>
+                <div class="col-md-3" style="text-align:right;"><b>Date: </b> {{ vm.today | date }}</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--LB Medical EPO Active Start-->
+    <div id="sb-temp" ng-show="vm.LBMEDEPOACT == true">
+        <h1>Plan at a Glance | </h1>
+        <h3>Calendar Year Benefits</h3>
+        <!-- Health Care Coverage-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Medical Care Coverage Summary
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:block">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>Coverage</b></td>
+                            <td><b>Comments</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Plan Deductible</b></td>
+                            <td>None</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there other deductibles for specific services?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is there an out-of-pocket limit?</b></td>
+                            <td>Yes, calendar year.</br>$1,500 per person</br>$3,000 per family</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Does this plan use a network of providers?</b></td>
+                            <td>Yes. See <a href="https://www.anthem.com/ca">www.athem.com/ca</a> or call 1-800-274-7767 for a list of participating providers.</td>
+                            <td>All services must be provided by an Anthem Blue Cross contracting provider except in emergency situations. <br /><br />Claims must be submitted directly to: </br>Anthem Blue Cross P.O. Box 60007</br>Los Angeles, CA 90060</br></br>For Electronic claims, payer ID is <b>47198</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral required to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td>All services must be provided by an Anthem Blue Cross contracting provider except in emergency situations. </td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral needed to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there services this plan doesn’t cover?</b></td>
+                            <td>Yes</td>
+                            <td>Many services must be pre-authorized. If no pre-authorization is obtained when required, payment for services may be denied. </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Plan Summary End-->
+        <!--Health Care Providers Office or Clinic Begining-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Health Care Providers Office or Clinic
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Primary care visit to treat an injury or illness</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Specialist visit</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Other practitioner office visit</b></td>
+                            <td>$25 copayment 100% of the Contracted Rate</td>
+                            <td>Not covered</td>
+                            <td>Chiropractic, Physical Therapy, & Occupational Therapy combined maximum of 24 visits per calendar year. Subject to review.</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Health care provider's office or clinic End-->
+        <!--x rays, lab and other diagnostic test Begining -->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>X-rays, Lab and Other Diagnostic Tests
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Diagnostic test (x-ray, blood work)</b></td>
+                            <td>100% of the Contracted Rate </td>
+                            <td>Not Covered</td>
+                            <td>Out-of-network not covered except for emergencies.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Imaging (CT/PET scans, MRIs)</b></td>
+                            <td>100% of the Contracted Rate </td>
+                            <td>Not Covered</td>
+                            <td>Out-of-network not covered except for emergencies</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- x rays, lab and diagnostic test End-->
+        <!-- Outpatient surgery Beginging-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Outpatient Surgery
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Facility fee (for example, ambulatory surgery center</b></td>
+                            <td>100% of the Contracted Rate </td>
+                            <td>Not Covered</td>
+                            <td>Prior authorization is required or benefits may be reduced or not covered if not medically necessary. Out-of- network services not covered except for emergencies.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>100% of the Contracted Rate </td>
+                            <td>Not Covered</td>
+                            <td>Prior authorization is required or benefits may be reduced or not covered if not medically necessary. Out-of- network services not covered except for emergencies.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency room services</b></td>
+                            <td>$75 copayment 100% of the Contracted Rate</td>
+                            <td>$75 copayment 90% of the UCR Amount.</td>
+                            <td>Copayment waived if admitted to hospital.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Outpatient surgery End-->
+        <!-- Immediate medical attention Begining -->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Immediate Medical Attention
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency medical transportation</b></td>
+                            <td>$25 copayment 100% of the Contracted Rate</td>
+                            <td>$25 copayment90% of the UCR Amount.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Urgent care</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate
+                            <td>Not Covered</td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Immediate Medical Attention End-->
+        <!--Hospital stay Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Hospital Stay
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Facility fee(for example, hospital room)</b></td>
+                            <td>$200 copayment 100% of the Contracted Rate</td>
+                            <td>$200 copayment 90% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>100% of the Contracted Rate
+                            <td>90% of the UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Hospital End-->
+        <!--Mental health, behavioral health, or substance abuse needs begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Mental Health, Behavioral Health, or Substance Abuse Needs
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health outpatient services</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health inpatient services</b></td>
+                            <td>$200 copayment 100% of Contracted Rate</td>
+                            <td>$200 copayment 90% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder outpatient services</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder inpatient services</b></td>
+                            <td>$200 copayment 100% of the Contracted Rate.</td>
+                            <td>$200 copayment 90% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Mental health, behavioral health, or substance abuse needs End-->
+        <!--Maternity begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Maternity Care
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Prenatal and postnatal care</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td>Not a benefit for dependent children.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Delivery and all inpatient services</b></td>
+			    <td>Not a benefit for dependent children.</td>
+                            <td>$200 copayment 100% of the Contracted Rate</td>
+                            <td>$200 copayment 90% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Maternity End-->
+        <!--Other Special Services begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Special Services
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Home health care</b></td>
+                            <td>$0 copayment for the first 30 days. $20 per visit after the first 30 days</td>
+                            <td>Not Covered</td>
+                            <td>Services must be pre-authorized and patient must be in skilled nursing facility within 7 days of being discharged from hospital. 100 visits maximum per calendar year.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Rehabilitation services</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Habilitation services</b></td>
+                            <td>Not covered</td>
+                            <td>Not Covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Skilled nursing care</b></td>
+                            <td>$200 copayment</b>100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td>Copayment waived if discharged from inpatient hospital to skilled nursing facility. Limited to 100 days for active employees and dependents including time in hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Durable medical equipment</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td>Orthotic devices coverage for patients with diabetes only. Purchases in excess of $100 must be pre-authorized. All rental equipment must be pre-authorized.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Hospice service</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td>Services must be pre-authorized. Life expectancy of six months or less. Up to 210 days of hospice and outpatient services delivered by the Hospice.</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Other Special Services End-->
+        <!--Excluded services & Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Services Plan Does NOT Cover (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Cosmetic surgery<br />Non-emergency care when traveling outside the US<br />Weight loss programs</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Infertility<br />Private-duty nursing<br />Hearing aids</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Long-term care<br />Routine foot care<br />Services not medically necessary</p>
+                </div>
+            </div>
+        </div>
+        <!--Excluded services & Other covered Services End-->
+        <!--Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Covered Services (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Acupuncture</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Bariatric Surgery<br />Routine Eye Care (Adult)</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Chiropractic Care<br />Dental Care (Adult)</p>
+                </div>
+            </div>
+        </div>
+        <!--Other covered Services End-->
+    </div>
+    <!--LB Medical EPO Active End-->
+    <!--LB Medical EPO Retiree Start-->
+    <div id="sb-temp" ng-show="vm.LBMEDEPORET == true">
+        <h1>Plan at a Glance | </h1>
+        <h3>Calendar Year Benefits</h3>
+        <!-- Health Care Coverage-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Medical Care Coverage Summary
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:block">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>Coverage</b></td>
+                            <td><b>Comments</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Plan Deductible</b></td>
+                            <td>None</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there other deductibles for specific services?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is there an out-of-pocket limit?</b></td>
+                            <td>Yes, calendar year.</br>$1,500 per person</br>$3,000 per family</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Does this plan use a network of providers?</b></td>
+                            <td>Yes. See www.anthem.com/ca or call 1-800-274-7767 for a list of participating providers.</td>
+                            <td>All services must be provided by an Anthem Blue Cross contracting provider except in emergency situations. <br /><br />Claims must be submitted directly to: </br>Anthem Blue Cross P.O. Box 60007</br>Los Angeles, CA 90060</br></br>For Electronic claims, payer ID is <b>47198</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral required to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td>All services must be provided by an Anthem Blue Cross contracting provider except in emergency situations. </td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral needed to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there services this plan doesn’t cover?</b></td>
+                            <td>Yes</td>
+                            <td>Many services must be pre-authorized. If no pre-authorization is obtained when required, payment for services may be denied. </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Plan Summary End-->
+        <!--Health care provider's office or clinic Beging-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Health Care Providers Office or Clinic
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Primary care visit to treat an injury or illness</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Specialist visit</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Other practitioner office visit</b></td>
+                            <td>$25 copayment 100% of the Contracted Rate</td>
+                            <td>Not covered</td>
+                            <td>Chiropractic, Physical Therapy, & Occupational Therapy combined maximum of 24 visits per calendar year. Subject to review.</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Health care provider's office or clinic End-->
+        <!--x rays, lab and other diagnostic test-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>X-rays, Lab and Other Diagnostic Tests
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Diagnostic test (x-ray, blood work)</b></td>
+                            <td>100% of the Contracted Rate </td>
+                            <td>Not Covered</td>
+                            <td>Out-of-network not covered except for emergencies.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Imaging (CT/PET scans, MRIs)</b></td>
+                            <td>100% of the Contracted Rate </td>
+                            <td>Not Covered</td>
+                            <td>Out-of-network not covered except for emergencies</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- x rays, lab and diagnostic test End-->
+        <!-- Outpatient surgery-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Outpatient Surgery
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Facility fee (for example, ambulatory surgery center</b></td>
+                            <td>100% of the Contracted Rate </td>
+                            <td>Not Covered</td>
+                            <td>Prior authorization is required or benefits may be reduced or not covered if not medically necessary. Out-of- network services not covered except for emergencies.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>100% of the Contracted Rate </td>
+                            <td>Not Covered</td>
+                            <td>Prior authorization is required or benefits may be reduced or not covered if not medically necessary. Out-of- network services not covered except for emergencies.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency room services</b></td>
+                            <td>$75 copayment 100% of the Contracted Rate</td>
+                            <td>$75 copayment 90% of the UCR Amount.</td>
+                            <td>Copayment waived if admitted to hospital.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Outpatient surgery End-->
+        <!-- Immediate medical attention-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Immediate Medical Attention
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency room services</b></td>
+                            <td>$75 copayment 100% of the Contracted Rate</td>
+                            <td>$75 copayment90% of the UCR Amount.</td>
+                            <td>Copayment waived if admitted to the hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency medical transportation</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>$25 copayment 90% of the UCR Amount.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Urgent care</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Immediate Medical Attention End-->
+        <!--Hospital stay Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Hospital Stay
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Facility fee(for example, hospital room)</b></td>
+                            <td>$200 copayment 100% of the Contracted Rate</td>
+                            <td>$200 copayment 90% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>100% of the Contracted Rate
+                            <td>90% of the UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Hospital End-->
+        <!--Mental health, behavioral health, or substance abuse needs begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Mental Health, Behavioral Health, or Substance Abuse Needs
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health outpatient services</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health inpatient services</b></td>
+                            <td>$200 copayment 100% of Contracted Rate</td>
+                            <td>$200 copayment 90% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder outpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder inpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Mental health, behavioral health, or substance abuse needs End-->
+        <!--Maternity begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Maternity Care
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Prenatal and postnatal care</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td>Not a benefit for dependent children.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Delivery and all inpatient services</b></td>
+                            <td>$200 copayment 100% of the Contracted Rate</td>
+                            <td>$200 copayment 90% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Maternity End-->
+        <!--Other Special Services begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Special Services
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Home health care</b></td>
+                            <td>$0 copayment for the first 30 days. $20 per visit after the first 30 days</td>
+                            <td>Not Covered</td>
+                            <td>Limited to 100 visits per calendar year. Pre-authorization required.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Rehabilitation services</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Habilitation services</b></td>
+                            <td>Not covered</td>
+                            <td>Not Covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Skilled nursing care</b></td>
+                            <td>$200 copayment</br>100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td>Limited to 100 days per calendar year including time in hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Durable medical equipment</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td>Orthotic devices coverage for patients with diabetes only. Purchases in excess of $100 must be pre-authorized.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Hospice service</b></td>
+                            <td>100% of the Contracted Rate</td>
+                            <td>Not Covered</td>
+                            <td>Services must be pre-authorized. Life expectancy of six months or less. Up to 210 days of hospice and outpatient services delivered by the Hospice.</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Other Special Services End-->
+        <!--Excluded services & Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Services Plan Does NOT Cover (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Services not medically necessary.<br />Cosmetic surgery<br />Non-emergency care when traveling outside the US<br />Weight loss programs</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Infertility<br />Private-duty nursing<br />Hearing aids</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Long-term care<br />Routine foot care<br />Dental Care (Adult)<br />Routine Eye Care (Adult)</p>
+                </div>
+            </div>
+        </div>
+        <!--Excluded services & Other covered Services End-->
+        <!--Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Covered Services (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Acupuncture</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Bariatric Surgery</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Chiropractic Care</p>
+                </div>
+            </div>
+        </div>
+        <!--Other covered Services End-->
+    </div>
+    <!--LB Medical EPO Retiree End-->
+    <!--LB Medical EPO Retiree SD End-->
+    <div id="sb-temp" ng-show="vm.LBMEDEPORETSD == true">
+        <h1>Plan at a Glance | </h1>
+        <h3>Calendar Year Benefits</h3>
+        <!-- Health Care Coverage-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Medical Care Coverage Summary
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:block">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>Coverage</b></td>
+                            <td><b>Comments</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Plan Deductible</b></td>
+                            <td>Per Calendar Year <br />$250 per person<br />$750 per family</td>
+                            <td>The annual deductible  and certain co-payments and co-insurance must be met amounts before this plan begins to pay for certain covered services. </td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there other deductibles for specific services?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is there an out-of-pocket limit?</b></td>
+                            <td>$6,350 per person</br>$12,700 per family</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Does this plan use a network of providers?</b></td>
+                            <td>Yes. See www.anthem.com/ca or call 1-800-274-7767 for a list of participating providers.</td>
+                            <td>Claims must be submitted directly to: </br>Anthem Blue Cross P.O. Box 60007</br>Los Angeles, CA 90060</br></br>For Electronic claims, payer ID is <b>47198</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral required to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there services this plan doesn’t cover?</b></td>
+                            <td>Yes</td>
+                            <td>Many services must be pre-authorized. If no pre-authorization is obtained when required, payment for services may be denied. </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Plan Summary End-->
+        <!--Health care providers office or clinic Beging-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Health Care Providers Office or Clinic
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Primary care visit to treat an injury or illness</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate</td>
+                            <td>$30 copayment 100% of UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Specialist visit</b></td>
+                            <td>$20 copayment<br />100% of the Contracted Rate</td>
+                            <td>$30 copayment<br />100% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Preventive care/ screening immunization</b></td>
+                            <td>$0 copayment<br />100% of the Contracted Rate</td>
+                            <td>$30 copayment<br />100% of UCR Amount</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Health care provider's office or clinic End-->
+        <!--x rays, lab and other diagnostic test-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>X-rays, Lab and Other Diagnostic Tests
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Diagnostic test (x-ray, blood work)</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of UCR Amount</td>
+                            <td>Subject to Medical Necessity.<br />Subject to $250 deductible.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Imaging (CT/PET scans, MRIs)</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Subject to Medical Necessity.Subject to $250 deductible.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- x rays, lab and diagnostic test End-->
+        <!-- Outpatient surgery-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Outpatient Surgery
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Facility fee (for example, ambulatory surgery center</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>Not Covered</td>
+                            <td>Non-Contracted outpatient facilities are paid according to the approved schedule of allowable per county.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>Non-Contracted <b>outpatient facilities</b> are paid according to the approved schedule of allowable per county. </td>
+                            <td>Pre-Authorization Required. Subject to $250 deductible. <br /><br />80% of $1,910 for facilities in Kern, San Luis Obispo and Santa Barbara Counties 80% of $2,340 in Ventura County<br /><br /> 80% of $2,450 for facilities in Riverside and San Bernardino Counties<br /><br />80% of $2,900 in Los Angeles and Orange Counties<br /><br />80% of $2,450 in San Diego County</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Outpatient surgery End-->
+        <!-- Immediate medical attention-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Immediate Medical Attention
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency room services</b></td>
+                            <td>$75 copayment 90% of the Contracted Rate</td>
+                            <td>$75 copayment 100% of the UCR Amount.</td>
+                            <td>Copayment waived if admitted to hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency medical transportation</b></td>
+                            <td>$25 copayment 80% of the Contracted Rate</td>
+                            <td>$25 copayment 100% of the UCR Amount.</td>
+                            <td>Subject to $250 deductable</td>
+                        </tr>
+                        <tr>
+                            <td><b>Urgent care</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate
+                            <td>$30 copayment 100% of UCR Amount</td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Immediate Medical Attention End-->
+        <!--Hospital stay Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Hospital Stay
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Facility fee(for example, hospital room)</b></td>
+                            <td>$200 copayment 90% of the Contracted Rate</td>
+                            <td>$200 copayment 80% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>$200< /br>90% of the Contracted Rate
+                            <td>$200< /br>80% of the UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Hospital End-->
+        <!--Mental health, behavioral health, or substance abuse needs begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Mental Health, Behavioral Health, or Substance Abuse Needs
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health outpatient services</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary</td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health inpatient services</b></td>
+                            <td>$200 copayment 90% of Contracted Rate</td>
+                            <td>$200 copayment 80% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary</td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder outpatient services</b></td>
+                            <td>90% of the Contracted Rate</td>
+                            <td>80% of UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary</td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder inpatient services</b></td>
+                            <td>$200 copayment 90% of the Contracted Rate.</td>
+                            <td>$200 copayment 80% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Mental health, behavioral health, or substance abuse needs End-->
+        <!--Maternity begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Maternity Care
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Prenatal and postnatal care</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>Not a benefit for dependent children.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Delivery and all inpatient services</b></td>
+                            <td>$200 copayment 90% of the Contracted Rate</td>
+                            <td>$200 copayment 80% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Maternity End-->
+        <!--Other Special Services begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Special Services
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Home health care</b></td>
+                            <td>80% of Contracted Rate</td>
+                            <td>80% of UCR Amount</td>
+                            <td>Prior authorization is required. Services must be within seven (7) days of being discharged from the hospital. Limited to 100 visits per year.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Rehabilitation services</b></td>
+                            <td>$20 copayment <br />80% of the Contracted Rate</td>
+                            <td>$30 copayment <br />80% of UCR Amount</td>
+                            <td>Limited to 32 visits within six months of open heart surgery</td>
+                        </tr>
+                        <tr>
+                            <td><b>Habilitation services</b></td>
+                            <td>Not covered</td>
+                            <td>Not Covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Skilled nursing care</b></td>
+                            <td>$200 copayment<br />90% of the Contracted Rate</td>
+                            <td>$200 copayment<br />80% of UCR Amount</td>
+                            <td>Copayment waived if discharged directly from inpatient hospital to skilled nursing facility. Participant limited to 70 days and dependents limited to 31 days including time in hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Durable medical equipment</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of UCR Amount</td>
+                            <td>Purchases in excess of $100 must be pre-authorized. All rental equipment must be pre-authorized.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Hospice service</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of UCR Amount</td>
+                            <td>Services must be pre-authorized. Life expectancy of six months or less. Up to 210 days of hospice and outpatient services delivered by the Hospice.</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Other Special Services End-->
+        <!--Excluded services & Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Services Plan Does NOT Cover (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Cosmetic surgery<br />Non-emergency care when traveling outside the US<br />Services not medically necessary</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Infertility<br />Private-duty nursing<br />Hearing aids</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Long-term care<br />Routine foot care<br />Weight loss programs</p>
+                </div>
+            </div>
+        </div>
+        <!--Excluded services & Other covered Services End-->
+        <!--Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Covered Services (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Acupuncture</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Bariatric Surgery<br />Routine Eye Care (Adult)</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Chiropractic Care</p>
+                </div>
+            </div>
+        </div>
+        <!--Other covered Services End-->
+    </div>
+    <!--LB Medical EPO Retiree SD Start-->
+    <!--LB Medical PPO Active Start-->
+    <div id="sb-temp" ng-show="vm.LBMEDPPOACT == true">
+        <h1>Plan at a Glance | </h1>
+        <h3>Calendar Year Benefits</h3>
+        <!-- Health Care Coverage-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Medical Care Coverage Summary
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:block">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>Coverage</b></td>
+                            <td><b>Comments</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Plan Deductible</b></td>
+                            <td>Per Calendar Year <br />$250 per person<br />$750 per family</td>
+                            <td>The annual deductible  and certain co-payments and co-insurance must be met amounts before this plan begins to pay for certain covered services. </td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there other deductibles for specific services?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is there an out-of-pocket limit?</b></td>
+                            <td>$6,350 per person</br>$12,700 per family</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Does this plan use a network of providers?</b></td>
+                            <td>Yes. See www.anthem.com/ca or call 1-800-274-7767 for a list of participating providers.</td>
+                            <td>Claims must be submitted directly to: </br>Anthem Blue Cross P.O. Box 60007</br>Los Angeles, CA 90060</br></br>For Electronic claims, payer ID is <b>47198</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral required to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there services this plan doesn’t cover?</b></td>
+                            <td>Yes</td>
+                            <td>Many services must be pre-authorized. If no pre-authorization is obtained when required, payment for services may be denied. </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Plan Summary End-->
+        <!--Health care provider's office or clinic Beging-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Health Care Providers Office or Clinic
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Primary care visit to treat an injury or illness</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate</td>
+                            <td>$30 copayment 100% of UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Specialist visit</b></td>
+                            <td>$20 copayment<br />100% of the Contracted Rate</td>
+                            <td>$30 copayment<br />100% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Preventive care/ screening immunization</b></td>
+                            <td>$0 copayment<br />100% of the Contracted Rate</td>
+                            <td>$30 copayment<br />100% of UCR Amount</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Health care provider's office or clinic End-->
+        <!--x rays, lab and other diagnostic test-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>X-rays, Lab and Other Diagnostic Tests
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Diagnostic test (x-ray, blood work)</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of UCR Amount</td>
+                            <td>Subject to Medical Necessity.<br />Subject to $250 deductible.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Imaging (CT/PET scans, MRIs)</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Subject to Medical Necessity.Subject to $250 deductible.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- x rays, lab and diagnostic test End-->
+        <!-- Outpatient surgery-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Outpatient Surgery
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Facility fee (for example, ambulatory surgery center</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>Not Covered</td>
+                            <td>Non-Contracted outpatient facilities are paid according to the approved schedule of allowable per county.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>Non-Contracted <b>outpatient facilities</b> are paid according to the approved schedule of allowable per county. </td>
+                            <td>Pre-Authorization Required. Subject to $250 deductible. <br /><br />80% of $1,910 for facilities in Kern, San Luis Obispo and Santa Barbara Counties 80% of $2,340 in Ventura County<br /><br /> 80% of $2,450 for facilities in Riverside and San Bernardino Counties<br /><br />80% of $2,900 in Los Angeles and Orange Counties<br /><br />80% of $2,450 in San Diego County</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Outpatient surgery End-->
+        <!-- Immediate medical attention-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Immediate Medical Attention
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency room services</b></td>
+                            <td>$75 copayment 90% of the Contracted Rate</td>
+                            <td>$75 copayment 100% of the UCR Amount.</td>
+                            <td>Copayment waived if admitted to hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency medical transportation</b></td>
+                            <td>$25 copayment 80% of the Contracted Rate</td>
+                            <td>$25 copayment 100% of the UCR Amount.</td>
+                            <td>Subject to $250 deductable</td>
+                        </tr>
+                        <tr>
+                            <td><b>Urgent care</b></td>
+                            <td>$20 copayment 100% of the Contracted Rate
+                            <td>$30 copayment 100% of UCR Amount</td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Immediate Medical Attention End-->
+        <!--Hospital stay Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Hospital Stay
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Facility fee(for example, hospital room)</b></td>
+                            <td>$200 copayment 90% of the Contracted Rate</td>
+                            <td>$200 copayment 80% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>$200< /br>90% of the Contracted Rate
+                            <td>$200< /br>80% of the UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary. <b>Out-of-network services not covered except for emergencies.</b></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Hospital End-->
+        <!--Mental health, behavioral health, or substance abuse needs begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Mental Health, Behavioral Health or Substance Abuse Needs
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health outpatient services</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary</td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health inpatient services</b></td>
+                            <td>$200 copayment 90% of Contracted Rate</td>
+                            <td>$200 copayment 80% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary</td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder outpatient services</b></td>
+                            <td>90% of the Contracted Rate</td>
+                            <td>80% of UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary</td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder inpatient services</b></td>
+                            <td>$200 copayment 90% of the Contracted Rate.</td>
+                            <td>$200 copayment 80% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Mental health, behavioral health, or substance abuse needs End-->
+        <!--Maternity begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Maternity Care
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Prenatal and postnatal care</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>Not a benefit for dependent children.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Delivery and all inpatient services</b></td>
+                            <td>$200 copayment 90% of the Contracted Rate</td>
+                            <td>$200 copayment 80% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Maternity End-->
+        <!--Other Special Services begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Special Services
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Home health care</b></td>
+                            <td>80% of Contracted Rate</td>
+                            <td>80% of UCR Amount</td>
+                            <td>Prior authorization is required. Services must be within seven (7) days of being discharged from the hospital. Limited to 100 visits per year.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Rehabilitation services</b></td>
+                            <td>$20 copayment <br />80% of the Contracted Rate</td>
+                            <td>$30 copayment <br />80% of UCR Amount</td>
+                            <td>Limited to 32 visits within six months of open heart surgery</td>
+                        </tr>
+                        <tr>
+                            <td><b>Habilitation services</b></td>
+                            <td>Not covered</td>
+                            <td>Not Covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Skilled nursing care</b></td>
+                            <td>$200 copayment<br />90% of the Contracted Rate</td>
+                            <td>$200 copayment<br />80% of UCR Amount</td>
+                            <td>Copayment waived if discharged directly from inpatient hospital to skilled nursing facility. Participant limited to 70 days and dependents limited to 31 days including time in hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Durable medical equipment</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of UCR Amount</td>
+                            <td>Purchases in excess of $100 must be pre-authorized. All rental equipment must be pre-authorized.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Hospice service</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of UCR Amount</td>
+                            <td>Services must be pre-authorized. Life expectancy of six months or less. Up to 210 days of hospice and outpatient services delivered by the Hospice.</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Other Special Services End-->
+        <!--Excluded services & Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Services Plan Does NOT Cover (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Cosmetic surgery<br />Non-emergency care when traveling outside the US<br />Services not medically necessary</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Infertility<br />Private-duty nursing<br />Hearing aids</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Long-term care<br />Routine foot care<br />Weight loss programs</p>
+                </div>
+            </div>
+        </div>
+        <!--Excluded services & Other covered Services End-->
+        <!--Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Covered Services (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Acupuncture</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Bariatric Surgery<br />Routine Eye Care (Adult)</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Chiropractic Care</p>
+                </div>
+            </div>
+        </div>
+        <!--Other covered Services End-->
+    </div>
+    <!--LB Medical PPO Active End-->
+    <!--LB Medical PPO Retiree Start-->
+    <div id="sb-temp" ng-show="vm.LBMEDPPORET == true">
+        <h1>Plan at a Glance | </h1>
+        <h3>Calendar Year Benefits</h3>
+        <!-- Health Care Coverage-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Medical Care Coverage Summary
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:block">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>Coverage</b></td>
+                            <td><b>Comments</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Plan Deductible</b></td>
+                            <td>Per Calendar Year<br /> $500 per person<br />$1,000 per family</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there other deductibles for specific services?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is there an out-of-pocket limit?</b></td>
+                            <td>Yes, calendar year.</br>$10,000/Calendar year</br>Individual $30,000/Calendar year/Family</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Does this plan use a network of providers?</b></td>
+                            <td>Yes. See www.anthem.com/ca or call 1-800-274-7767 for a list of participating providers.</td>
+                            <td>All services must be provided by an Anthem Blue Cross contracting provider except in emergency situations. <br /><br />Claims must be submitted directly to: </br>Anthem Blue Cross P.O. Box 60007</br>Los Angeles, CA 90060</br></br>For Electronic claims, payer ID is <b>47198</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral required to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td>All services must be provided by an Anthem Blue Cross contracting provider except in emergency situations. </td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral needed to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there services this plan doesn’t cover?</b></td>
+                            <td>Yes</td>
+                            <td>Many services must be pre-authorized. If no pre-authorization is obtained when required, payment for services may be denied. </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Plan Summary End-->
+        <!--Health care provider's office or clinic Beging-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Health Care Providers Office or Clinic
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Primary care visit to treat an injury or illness</b></td>
+                            <td>80% Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Specialist visit</b></td>
+                            <td>80% Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Other practitioner office visit</b></td>
+                            <td>80% Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Chiropractic limited to 24 visits. Physical Therapy limited to 32 visits for in-network, 24 visits out-of- network. Occupational Therapy limited to 42 visits. All visits are per calendar year and subject to review.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Preventive car/Screening/Immunization</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td>Recommended immunizations are covered if they are provided by an in-network provider</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Health care provider's office or clinic End-->
+        <!--x rays, lab and other diagnostic test-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>X-rays, Lab and Other Diagnostic Tests
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Diagnostic test (x-ray, blood work)</b></td>
+                            <td>80% Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Subject to Medical Necessity. No routine coverage.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Imaging (CT/PET scans, MRIs)</b></td>
+                            <td>80% Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Subject to Medical Necessity. No routine coverage.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- x rays, lab and diagnostic test End-->
+        <!-- Outpatient surgery-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Outpatient Surgery
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Facility fee (for example, ambulatory surgery center</b></td>
+                            <td>80% of Contracted Rate</td>
+                            <td>Non-Contracted outpatient facilities are paid according to the approved schedule of allowable per county. </td>
+                            <td>Pre-Authorization Required.<br /><br />80% of $1,910 for facilities in Kern, San Luis Obispo and Santa Barbara Counties<br />80% of $2,340 in Ventura County<br />80% of $2,450 for facilities in Riverside, San Diego and San Bernardino Counties<br />80% of $2,900 in Los Angeles and Orange Counties</td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Pre-Authorization Required.<br /><br />80% of $1,910 for facilities in Kern, San Luis Obispo and Santa Barbara Counties<br />80% of $2,340 in Ventura County<br />80% of $2,450 for facilities in Riverside, San Diego and San Bernardino Counties<br />80% of $2,900 in Los Angeles and Orange Counties</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Outpatient surgery End-->
+        <!-- Immediate medical attention-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Immediate Medical Attention
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency room services</b></td>
+                            <td>$75 copayment<br />90% of the Contracted Rate</td>
+                            <td>$75 copayment<br />90% of the UCR Amount.</td>
+                            <td>Copayment waived if admitted to hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency medical transportation</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>90% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Urgent care</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Immediate Medical Attention End-->
+        <!--Hospital stay Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Hospital Stay
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Facility fee(for example, hospital room)</b></td>
+                            <td>$200 copayment<br />90% of the Contracted Rate</td>
+                            <td>$200 copayment<br />80% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>80% of the Contracted Rate
+                            <td>80% of the UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Hospital End-->
+        <!--Mental health, behavioral health, or substance abuse needs begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Mental Health, Behavioral Health or Substance Abuse Needs
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health outpatient services</b></td>
+                            <td>90% of the Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health inpatient services</b></td>
+                            <td>$200 copayment<br />90% of Contracted Rate</td>
+                            <td>$200 copayment<br />80% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder outpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder inpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Mental health, behavioral health, or substance abuse needs End-->
+        <!--Maternity begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Maternity Care
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Prenatal and postnatal care</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of the UCR Amount.</td>
+                            <td>Not a benefit for dependent children.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Delivery and all inpatient services</b></td>
+                            <td>$200 copayment<br />90% of the Contracted Rate</td>
+                            <td>$200 copayment<br />90% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Maternity End-->
+        <!--Other Special Services begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Special Services
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Home health care</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Pre-authorization is required. Services must be within seven (7) days from being discharged from the hospital. Limited to 100 visits per calendar year.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Rehabilitation services</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Habilitation services</b></td>
+                            <td>Not covered</td>
+                            <td>Not Covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Skilled nursing care</b></td>
+                            <td>$200 copayment<br />90% of the Contracted Rate</td>
+                            <td>$200 copayment<br />80% of the Contracted Rate</td>
+                            <td>Copayment waived if discharged directly from inpatient hospital to skilled nursing facility. Participant limited to 70 days and dependents limited to 31 days including time in hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Durable medical equipment</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Purchases in excess of $100 must be pre-authorized. All rental equipment must be pre-authorized.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Hospice service</b></td>
+                            <td>90% of the Contracted Rate</td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Services must be pre-authorized. Life expectancy of six months or less. Up to 210 days of hospice and outpatient services delivered by the Hospice.</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Other Special Services End-->
+        <!--Excluded services & Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Services Plan Does NOT Cover (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Cosmetic surgery<br />Non-emergency care when traveling outside the US<br />Weight loss programs<br />Routine Eye Care (Adult)</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Infertility<br />Private-duty nursing<br />Hearing aids<br />Dental care (Adult)</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Long-term care<br />Routine foot care<br />Services not medically necessary</p>
+                </div>
+            </div>
+        </div>
+        <!--Excluded services & Other covered Services End-->
+        <!--Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Covered Services (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Acupuncture</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Bariatric Surgery</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Chiropractic Care</p>
+                </div>
+            </div>
+        </div>
+        <!--Other covered Services End-->
+    </div>
+    <!--LB Medical PPO Retiree End-->
+    <!--LB Medical PPO Retiree Plan 1 Start-->
+    <div id="sb-temp" ng-show="vm.LBMEDPPORETP1 == true">
+        <h1>Plan at a Glance | </h1>
+        <h3>Calendar Year Benefits</h3>
+        <!-- Health Care Coverage-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Medical Care Coverage Summary
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:block">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>Coverage</b></td>
+                            <td><b>Comments</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Plan Deductible</b></td>
+                            <td>Per Calendar Year<br /> $500 per person<br />$1,000 per family</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there other deductibles for specific services?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is there an out-of-pocket limit?</b></td>
+                            <td>Yes, In-Network $5,000 per person $10,000 per family<br />Yes, Out-of-Network $6,500 per person $13,000 per family</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Does this plan use a network of providers?</b></td>
+                            <td>Yes. See www.anthem.com/ca or call 1-800-274-7767 for a list of participating providers.</td>
+                            <td>All services must be provided by an Anthem Blue Cross contracting provider except in emergency situations. <br /><br />Claims must be submitted directly to: </br>Anthem Blue Cross P.O. Box 60007</br>Los Angeles, CA 90060</br></br>For Electronic claims, payer ID is <b>47198</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral needed to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there services this plan doesn’t cover?</b></td>
+                            <td>Yes</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Plan Summary End-->
+        <!--Health care provider's office or clinic Beging-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Health Care Providers Office or Clinic
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Primary care visit to treat an injury or illness</b></td>
+                            <td>80% Contracted Rate</td>
+                            <td>70% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Specialist visit</b></td>
+                            <td>80% Contracted Rate</td>
+                            <td>70% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Other practitioner office visit</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Preventive car/Screening/Immunization</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Health care provider's office or clinic End-->
+        <!--x rays, lab and other diagnostic test-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>X-rays, Lab and Other Diagnostic Tests
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Diagnostic test (x-ray, blood work)</b></td>
+                            <td>80% Contracted Rate</td>
+                            <td>70% of the UCR Amount</td>
+                            <td>Subject to Medical Necessity. No routine coverage.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Imaging (CT/PET scans, MRIs)</b></td>
+                            <td>80% Contracted Rate</td>
+                            <td>70% of the UCR Amount</td>
+                            <td>Subject to Medical Necessity. No routine coverage.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- x rays, lab and diagnostic test End-->
+        <!-- Outpatient surgery-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Outpatient Surgery
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Facility fee (for example, ambulatory surgery center</b></td>
+                            <td>80% of Contracted Rate</td>
+                            <td>Non-Contracted <b>outpatient facilities</b> are paid according to the approved schedule of allowable per county. </td>
+                            <td>Pre-Authorization Required.<br /><br />80% of $1,910 for facilities in Kern, San Luis Obispo and Santa Barbara Counties<br />80% of $2,340 in Ventura County<br />80% of $2,450 for facilities in Riverside, San Diego and San Bernardino Counties<br />80% of $2,900 in Los Angeles and Orange Counties</td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>70% of the UCR Amount</td>
+                            <td>Pre-Authorization Required.<br /><br />80% of $1,910 for facilities in Kern, San Luis Obispo and Santa Barbara Counties<br />80% of $2,340 in Ventura County<br />80% of $2,450 for facilities in Riverside, San Diego and San Bernardino Counties<br />80% of $2,900 in Los Angeles and Orange Counties</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Outpatient surgery End-->
+        <!-- Immediate medical attention-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Immediate Medical Attention
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency room services</b></td>
+                            <td>$30 copayment<br />80% of the Contracted Rate</td>
+                            <td>$70 copayment<br />70% of the UCR Amount.</td>
+                            <td>Copayment waived if admitted to hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency medical transportation</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>70% of the UCR Amount</td>
+                            <td>$750 maximum allowance</td>
+                        </tr>
+                        <tr>
+                            <td><b>Urgent care</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>70% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Immediate Medical Attention End-->
+        <!--Hospital stay Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Hospital Stay
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Facility fee(for example, hospital room)</b></td>
+                            <td>$200 copayment<br />80% of the Contracted Rate</td>
+                            <td>$200 copayment<br />70% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>80% of the Contracted Rate
+                            <td>70% of the UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Hospital End-->
+        <!--Mental health, behavioral health, or substance abuse needs begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Mental Health, Behavioral Health or Substance Abuse Needs
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health outpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health inpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder outpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder inpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Mental health, behavioral health, or substance abuse needs End-->
+        <!--Maternity begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Maternity Care
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Prenatal and postnatal care</b></td>
+                            <td>80% of the Contracted Rate</td>
+                            <td>70% of the UCR Amount.</td>
+                            <td>Not a benefit for dependent children.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Delivery and all inpatient services</b></td>
+                            <td>$200 copayment<br />80% of the Contracted Rate</td>
+                            <td>$200 copayment<br />70% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Maternity End-->
+        <!--Other Special Services begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Special Services
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Home health care</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Rehabilitation services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Habilitation services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Skilled nursing care</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Durable medical equipment</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Hospice service</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Other Special Services End-->
+        <!--Excluded services & Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Services Plan Does NOT Cover (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Services that are not medically necessary<br />Cosmetic surgery<br />Non-emergency care when traveling outside the US<br />Weight loss program</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Infertility treatment<br />Private-duty nursing<br />Dental care (Adult)<br />Routine Eye Care (Adult)</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Long-term care<br />Routine foot care<br />Hearing aids<br />Chiropractic Care<br />Acupuncture</p>
+                </div>
+            </div>
+        </div>
+        <!--Excluded services & Other covered Services End-->
+        <!--Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Covered Services (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Bariatric Surgery</p>
+                </div>
+            </div>
+        </div>
+        <!--Other covered Services End-->
+    </div>
+    <!--LB Medical PPO Retiree Plan 1 End-->
+    <!--LB Medical PPO Retiree Plan 2 Start-->
+    <div id="sb-temp" ng-show="vm.LBMEDPPORETP2 == true">
+        <h1>Plan at a Glance | </h1>
+        <h3>Calendar Year Benefits</h3>
+        <!-- Health Care Coverage-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Medical Care Coverage Summary
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:block">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>Coverage</b></td>
+                            <td><b>Comments</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Plan Deductible</b></td>
+                            <td>Per Calendar Year<br /> $750 per person<br />$2,250 per family</td>
+                            <td>The annual deductible  and certain co-payments and co-insurance must be met before this plan begins to pay for certain covered services.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there other deductibles for specific services?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is there an out-of-pocket limit?</b></td>
+                            <td>Yes, In-Network $7,000 per person $14,000 per family<br />Yes, Out-of-Network $8,000 per person $16,000 per family</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Does this plan use a network of providers?</b></td>
+                            <td>Yes. See www.anthem.com/ca or call 1-800-274-7767 for a list of participating providers.</td>
+                            <td>All services must be provided by an Anthem Blue Cross contracting provider except in emergency situations. <br /><br />Claims must be submitted directly to: </br>Anthem Blue Cross </br>P.O. Box 60007</br>Los Angeles, CA 90060</br></br>For Electronic claims, payer ID is <b>47198</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral needed to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there services this plan doesn’t cover?</b></td>
+                            <td>Yes</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Plan Summary End-->
+        <!--Health care provider's office or clinic Beging-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Health Care Providers Office or Clinic
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Primary care visit to treat an injury or illness</b></td>
+                            <td>70% Contracted Rate</td>
+                            <td>60% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Specialist visit</b></td>
+                            <td>70% Contracted Rate</td>
+                            <td>60% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Other practitioner office visit</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Preventive car/Screening/Immunization</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Health care provider's office or clinic End-->
+        <!--x rays, lab and other diagnostic test-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>X-rays, Lab and Other Diagnostic Tests
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Diagnostic test (x-ray, blood work)</b></td>
+                            <td>70% Contracted Rate</td>
+                            <td>60% of the UCR Amount</td>
+                            <td>Subject to Medical Necessity. No routine coverage.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Imaging (CT/PET scans, MRIs)</b></td>
+                            <td>70% Contracted Rate</td>
+                            <td>60% of the UCR Amount</td>
+                            <td>Subject to Medical Necessity. No routine coverage.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- x rays, lab and diagnostic test End-->
+        <!-- Outpatient surgery-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Outpatient Surgery
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Facility fee (for example, ambulatory surgery center</b></td>
+                            <td>70% of Contracted Rate</td>
+                            <td>Non-Contracted <b>outpatient facilities</b> are paid according to the approved schedule of allowable per county. </td>
+                            <td>Pre-Authorization Required.<br /><br />60% of $1,910 for facilities in Kern, San Luis Obispo and Santa Barbara Counties<br />60% of $2,340 in Ventura County<br />60% of $2,450 for facilities in Riverside, San Diego and San Bernardino Counties<br />60% of $2,900 in Los Angeles and Orange Counties</td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>70% of the Contracted Rate </td>
+                            <td>60% of the UCR Amount</td>
+                            <td>Pre-Authorization Required.<br /><br />60% of $1,910 for facilities in Kern, San Luis Obispo and Santa Barbara Counties<br />60% of $2,340 in Ventura County<br />60% of $2,450 for facilities in Riverside, San Diego and San Bernardino Counties<br />60% of $2,900 in Los Angeles and Orange Counties</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Outpatient surgery End-->
+        <!-- Immediate medical attention-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Immediate Medical Attention
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency room services</b></td>
+                            <td>$30 copayment<br />70% of the Contracted Rate</td>
+                            <td>$30 copayment<br />60% of the UCR Amount.</td>
+                            <td>Copayment waived if admitted to hospital.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Emergency medical transportation</b></td>
+                            <td>70% of the Contracted Rate</td>
+                            <td>60% of the UCR Amount</td>
+                            <td>$750 maximum allowance</td>
+                        </tr>
+                        <tr>
+                            <td><b>Urgent care</b></td>
+                            <td>70% of the Contracted Rate</td>
+                            <td>60% of the UCR Amount</td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Immediate Medical Attention End-->
+        <!--Hospital stay Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Hospital Stay
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Facility fee(for example, hospital room)</b></td>
+                            <td>$200 copayment<br />70% of the Contracted Rate</td>
+                            <td>$200 copayment<br />60% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Physician/surgeon fees</b></td>
+                            <td>70% of the Contracted Rate
+                            <td>60% of the UCR Amount</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Hospital End-->
+        <!--Mental health, behavioral health, or substance abuse needs begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Mental Health, Behavioral Health or Substance Abuse Needs
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health outpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Mental/Behavioral health inpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder outpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Substance abuse disorder inpatient services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Mental health, behavioral health, or substance abuse needs End-->
+        <!--Maternity begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Maternity Care
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Prenatal and postnatal care</b></td>
+                            <td>70% of the Contracted Rate</td>
+                            <td>60% of the UCR Amount.</td>
+                            <td>Not a benefit for dependent children.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Delivery and all inpatient services</b></td>
+                            <td>$200 copayment<br />70% of the Contracted Rate</td>
+                            <td>$200 copayment<br />60% of the UCR Amount.</td>
+                            <td>Prior authorization is required or benefits will be reduced or not covered if not medically necessary.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Maternity End-->
+        <!--Other Special Services begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Special Services
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Home health care</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Rehabilitation services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Habilitation services</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Skilled nursing care</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Durable medical equipment</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Hospice service</b></td>
+                            <td>Not covered</td>
+                            <td>Not covered</td>
+                            <td></td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Other Special Services End-->
+        <!--Excluded services & Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Services Plan Does NOT Cover (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Services that are not medically necessary<br />Cosmetic surgery<br />Non-emergency care when traveling outside the US<br />Weight loss program</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Infertility treatment<br />Private-duty nursing<br />Dental care (Adult)<br />Routine Eye Care (Adult)</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Long-term care<br />Routine foot care<br />Hearing aids<br />Chiropractic Care<br />Acupuncture</p>
+                </div>
+            </div>
+        </div>
+        <!--Excluded services & Other covered Services End-->
+        <!--Other covered Services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Other Covered Services (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-3">
+                    <p>Bariatric Surgery</p>
+                </div>
+            </div>
+        </div>
+        <!--Other covered Services End-->
+    </div>
+    <!--LB Medical PPO Retiree Plan 2 End-->
+    <!--LB Dental PPO Start-->
+    <div id="sb-temp" ng-show="vm.LBDENPPO == true">
+        <h1>Plan at a Glance | </h1>
+        <h3>Calendar Year Benefits</h3>
+        <!-- Health Care Coverage-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Dental Care Coverage Summary
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:block">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>Coverage</b></td>
+                            <td><b>Comments</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Plan Deductible</b></td>
+                            <td>Per Calendar Year</br>$25 per person</br>$75 per family</td>
+                            <td>The annual deductible  must be met before this plan begins to pay for covered services. Deductible waived for prophylaxis.</td>
+                        </tr>
+                        <tr>
+                            <td><b>General Dental Calendar Year Maximum</b></td>
+                            <td>$2,500 per person per calendar year.</td>
+                            <td>No dental maximum for pediatric care up to age 19.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Oral Surgery Calendar year Maximum</b></td>
+                            <td>$1,000 per person per calendar year</td>
+                            <td>This maximum is part of the $2,500 general dental calendar year maximum.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Orthodontia</b></td>
+                            <td>$3,000 lifetime maximum per person. Coverage for all eligible dependents.</td>
+                            <td>Pre-Authorization is mandatory. Records fee is included as part of the lifetime maximum.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Does this plan use a network of providers?</b></td>
+                            <td>Yes </br>See www.anthem.com/ca or call</br>1-800-274-7767 for a list of participating providers.</td>
+			    <td>Claims must be submitted directly to: </br>Anthem Blue Cross </br>P.O. Box 659444</br>San Antonio, TX 78265</br></br>For Electronic claims, payer ID is <b>47198</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Is a referral needed to see a specialist?</b></td>
+                            <td>No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><b>Are there services this plan does not cover?</b></td>
+                            <td>Yes</td>
+                            <td>Pre-Authorization is strongly recommended on all treatment exceeding $500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Surgical Benefits End-->
+        <!--Hospital Facility Coverage Beging-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Diagnostic and Preventative
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Exam</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>One time every six (6) months.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Prophylaxis</br>(Cleaning)</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>One time every six (6) months.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Fluoride</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>One time every six (6) months up to the age of 18</td>
+                        </tr>
+                        <tr>
+                            <td><b>Bitewing X-rays</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Once every twelve (12) months. Coverage for images of individual teeth subject to necessity.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Complete Series</br>(Full Mouth X-rays)</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Once every five (5) years.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Panoramic X-rays</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Subject to necessity. Panoramic X-rays billed with bitewings and/or periapical are considered a complete series full mouth X-ray.</td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+                <h5>Certain covered services are subject to time and frequency limitations; time and frequency limitations are measured from the month service was last performed. All dental services are subject to dental necessity. </h5>
+            </div>
+        </div>
+        <!--Diagnostic and Preventative End-->
+        <!-- Basic Restorative-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Basic Restorative
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+
+                        <tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><b>Fillings</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Once every twenty four (24) months. Posterior composites are downgraded to Amalgam allowance. </td>
+                        </tr>
+                        <tr>
+                            <td><b>Sealants</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Once every three (3) years. Covered for children up to age 14 on molars only with no previous restoration.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Scaling and Root Planning</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Once every twenty-four (24) months. Claim must include diagnostic X-rays, periodontal charting and photograph. Four (4) quads on the same day allowed. every three (3) years. Covered for children up to age 14 on molars only with no previous restoration.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Palliative Treatment</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>For emergency treatment only to relieve pain and when no other treatment is performed on the same day.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Periodontal Maintenance</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Code D4910, only covered if history of previous osseous surgery. Allowed at a maximum of once every three (3) months.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Night Guard (Occlusal Guard)</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Only for bruxism. Claim must include diagnostic X-rays and photograph. Adjustments not covered.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Extractions</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>$1,000 per person per calendar year. <b>Part of the $2,500 general dental calendar year maximum.</b> </td>
+                        </tr>
+                        <tr>
+                            <td><b>Anesthesia</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Coverage only for the first thirty (30) minutes. General anesthesia not covered.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Osseous Surgery</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Once every twenty-four (24) months. Only covered if scaling and root planning was initially done.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Basic Restorative End-->
+        <!-- Major Restorative Start-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Major Restorative
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Root Canal</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Claim must contain pre and post-up X-rays.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Crowns</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Prior authorization is required. Once every five (5) years. For implants, the tooth must have been extracted while covered under the Plan or participant must have been eligible within the past twelve (12) months. Covered for ages sixteen (16) and older.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Onlays/Inlays</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Prior authorization is required. Once every five (5) years. For implants, the tooth must have been extracted while covered under the Plan or participant must have been eligible within the past twelve (12) months. Covered for ages sixteen (16) and older.</td>
+			</tr>
+                        <tr>
+                            <td><b>Implants</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Prior authorization is required. Once every five (5) years. For implants, the tooth must have been extracted while covered under the Plan or participant must have been eligible within the past twelve (12) months. Covered for ages sixteen (16) and older.</td>
+			</tr>
+                        <tr>
+                            <td><b>Dentures</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+		            <td>Prior authorization is required. Once every five (5) years. For implants, the tooth must have been extracted while covered under the Plan or participant must have been eligible within the past twelve (12) months. Covered for ages sixteen (16) and older.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Prosthetic Replacements</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Prior authorization is required. Once every five (5) years. For implants, the tooth must have been extracted while covered under the Plan or participant must have been eligible within the past twelve (12) months. Covered for ages sixteen (16) and older.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Medical Coverage for Physicians Services End-->
+        <!-- Orthodontia-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Orthodontia
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll" style="display:none">
+                <table class="table table-bordered table-striped table-condensed flip-content">
+                    <tbody>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>In-Network Coverage</b></td>
+                            <td><b>Out-of-Network Coverage</b></td>
+                            <td><b>Limitations & Exceptions</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Orthodontic Treatment</b></td>
+                            <td>80% of the Contracted Rate </td>
+                            <td>80% of the UCR Amount</td>
+                            <td>Prior authorization is required. Lifetime maximum of $3,000 per person. Treatment records with prior authorization must include: Comprehensive treatment plan with retainer fee, pre-treatment photographs, cephalometric X-rays, tracings, panoramic X-rays.</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+                <h5>Orthodontic payments are not paid automatically. Provider must submit monthly or quarterly bills. Claims must be submitted directly to Anthem Blue Cross, P.O. Box 659444 San Antonio, Texas 78265. Electronic payer ID: 47198.</h5>
+
+            </div>
+        </div>
+        <!-- Orthodontia Coverage End-->
+        <!--Non covered services Begin-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Services Plan Does NOT Cover (This is not a complete list. Contact the Trust Fund Office for other excluded services.)
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll col-md-12" style="display:none">
+
+                <div class="col-md-6">
+                    <p>Services that are not dentally necessary<br />Cosmetic surgery<br />Pulp therapy<br />TMJ<br />Nitrous Oxide<br />IV Sedation<br />Bleaching<br /></p>
+                </div>
+                <div class="col-md-6">
+                    <p>Veneers<br />Arestin<br />Dental services outside of the U.S.A<br />Prior Extractions (within less than one year of member's eligibility)<br /></p>
+                </div>
+            </div>
+        </div>
+        <!--Pre Authorization Requirement End-->
+    </div>
+    <!--LB Dental PPO End-->
